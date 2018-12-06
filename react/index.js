@@ -20,14 +20,22 @@ class SomeForm extends React.Component {
   state = { addressBar: '' }
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.history.replace('place')
+    this.props.history.replace(this.state.addressBar)
+  }
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+  componentDidMount() {
+    console.log('location: ', this.props.history.location.pathname.slice(1))
+    this.setState({ addressBar: this.props.history.location.pathname.slice(1) })
   }
   render() {
-    console.log('SOME FORM PROPS', this.props)
     return (
       <form onSubmit={this.handleSubmit}>
-        <input type="text" />
-        <button type="submit">Save</button>
+        <input name="addressBar" value={this.state.addressBar} onChange={this.handleChange} type="text" />
+        <button className="save-button" type="submit">Save</button>
       </form>
     )
   }
