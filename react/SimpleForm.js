@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom'
 import { Base64 } from 'js-base64'
 import { compress, decompress } from 'lz-string'
 
-const unCompressed = `
+const loremIpsum = `
 Lorem ipsum dolor amet cray butcher asymmetrical raw denim. Try-hard vice cray poke. Health goth art party drinking vinegar slow-carb, truffaut gentrify plaid kogi tofu lyft quinoa vice cornhole iPhone. Chia pok pok artisan bespoke, hot chicken VHS cloud bread.
 
 Williamsburg tacos godard forage keytar mustache. Poke kombucha gentrify fanny pack letterpress ennui hella, waistcoat etsy brooklyn vegan. Echo park food truck post-ironic man bun crucifix sriracha pabst heirloom. Street art portland mlkshk distillery.
@@ -34,8 +34,8 @@ Flexitarian readymade williamsburg gentrify hammock. Street art 90's tilde, mast
 
 Jean shorts taxidermy tilde adaptogen. Synth salvia deep v cray poutine small batch tofu retro gentrify enamel pin literally. Af disrupt ethical direct trade stumptown, meh swag sustainable roof party yuccie single-origin coffee. Man braid deep v direct trade normcore, pop-up cred coloring book lo-fi aesthetic kitsch. Bushwick skateboard twee, roof party blue bottle pok pok tumblr locavore single-origin coffee palo santo bitters aesthetic. Actually master cleanse succulents asymmetrical sartorial chillwave cred plaid paleo.
 `
-const compressed = compress(unCompressed)
-// console.log('BEFORE', unCompressed.length)
+const compressed = compress(loremIpsum)
+// console.log('BEFORE', loremIpsum.length)
 // console.log('AFTER', compressed.length)
 
 class SomeForm extends React.Component {
@@ -48,36 +48,30 @@ class SomeForm extends React.Component {
       [e.target.name]: e.target.value
     }, () => {
       this.props.history.replace(this.state.addressBar)
-      // this.props.history.replace(compressed)
-      // this.props.history.replace(Base64.encodeURI(compressed))
-      // this.props.history.replace(Base64.encodeURI(unCompressed))
-      // console.log('COMPRESSED', Base64.encodeURI(unCompressed).length)
-      // console.log('COMPRESSED', Base64.encodeURI(compressed).length)
     })
   }
-  decodeData = (data) => {
-    const decoded = decodeURI(data)
-    console.log('decoded', decoded)
-    const deCompressed = decompress(decoded)
-    console.log('deCompressed', deCompressed)
-    return decoded
+  addLorem = () => {
+    this.setState({
+      addressBar: loremIpsum
+    }, () => {
+      this.props.history.replace(this.state.addressBar)
+    })
   }
   componentDidMount() {
-    // console.log('location: ', this.props.history.location.pathname.slice(1))
-    // this.setState({ addressBar: this.props.history.location.pathname.slice(1) })
-    this.setState({ addressBar: unCompressed })
+    this.setState({ addressBar: this.props.history.location.pathname.slice(1) })
   }
   render() {
     const encodedAddressBar = Base64.encodeURI(this.state.addressBar)
-    console.log(this.decodeData(this.state.addressBar))
     // console.log('encodedAddressBar: ', encodedAddressBar)
     return (
       <div>
+        <h1>Length: {this.state.addressBar.length}</h1>
         <label htmlFor="addressBar">Address Bar: </label>
+        <button onClick={this.addLorem}>Add Lorem</button>
         <br />
         <textarea
           name="addressBar"
-          style={{ width: '80%', height: '80%' }}
+          style={{ width: '80%', height: '200px', }}
           value={this.state.addressBar}
           onChange={this.handleChange}
         />
