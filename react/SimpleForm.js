@@ -1,7 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { Base64 } from 'js-base64'
-import { compress } from 'lz-string'
+import { compress, decompress } from 'lz-string'
 
 const unCompressed = `
 Lorem ipsum dolor amet cray butcher asymmetrical raw denim. Try-hard vice cray poke. Health goth art party drinking vinegar slow-carb, truffaut gentrify plaid kogi tofu lyft quinoa vice cornhole iPhone. Chia pok pok artisan bespoke, hot chicken VHS cloud bread.
@@ -47,25 +47,41 @@ class SomeForm extends React.Component {
     this.setState({
       [e.target.name]: e.target.value
     }, () => {
-      // this.props.history.replace(this.state.addressBar)
+      this.props.history.replace(this.state.addressBar)
       // this.props.history.replace(compressed)
-      this.props.history.replace(Base64.encodeURI(compressed))
-      console.log('COMPRESSED', Base64.encodeURI(unCompressed).length)
-      console.log('COMPRESSED', Base64.encodeURI(compressed).length)
+      // this.props.history.replace(Base64.encodeURI(compressed))
+      // this.props.history.replace(Base64.encodeURI(unCompressed))
+      // console.log('COMPRESSED', Base64.encodeURI(unCompressed).length)
+      // console.log('COMPRESSED', Base64.encodeURI(compressed).length)
     })
+  }
+  decodeData = (data) => {
+    const decoded = decodeURI(data)
+    console.log('decoded', decoded)
+    const deCompressed = decompress(decoded)
+    console.log('deCompressed', deCompressed)
+    return decoded
   }
   componentDidMount() {
     // console.log('location: ', this.props.history.location.pathname.slice(1))
-    this.setState({ addressBar: this.props.history.location.pathname.slice(1) })
+    // this.setState({ addressBar: this.props.history.location.pathname.slice(1) })
+    this.setState({ addressBar: unCompressed })
   }
   render() {
     const encodedAddressBar = Base64.encodeURI(this.state.addressBar)
+    console.log(this.decodeData(this.state.addressBar))
     // console.log('encodedAddressBar: ', encodedAddressBar)
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input name="addressBar" value={this.state.addressBar} onChange={this.handleChange} type="text" />
-        <button className="save-button" type="submit">Save</button>
-      </form>
+      <div>
+        <label htmlFor="addressBar">Address Bar: </label>
+        <br />
+        <textarea
+          name="addressBar"
+          style={{ width: '80%', height: '80%' }}
+          value={this.state.addressBar}
+          onChange={this.handleChange}
+        />
+      </div>
     )
   }
 }
