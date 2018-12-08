@@ -71,9 +71,9 @@ class SomeForm extends React.Component {
     return (
       <div>
         <h1>Length: {this.state.addressBar.length}</h1>
-        <label htmlFor="addressBar">Address Bar: </label>
-        <button onClick={this.addLorem}>Add Lorem</button>
-        <button onClick={this.copyLink}>COPY LINK</button>
+        <label htmlFor="addressBar">Address Bar </label>
+        <button className="address-button" onClick={this.addLorem}>Add Lorem</button>
+        <button className="address-button" onClick={this.copyLink}>COPY LINK</button>
         <br />
         <textarea
           name="addressBar"
