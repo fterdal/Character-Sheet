@@ -1,20 +1,23 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
-import SimpleForm from './SimpleForm'
+import { Provider } from 'react-redux'
 import { store } from './redux'
+import { SimpleForm, CharacterSheet } from './components'
 
 const App = () => (
   <div>
     <Router>
       <div>
-        <SimpleForm />
+        <CharacterSheet />
       </div>
     </Router>
   </div>
 )
 
 render(
-  <App />,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('app')
 )

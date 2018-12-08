@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom'
 import { Base64 } from 'js-base64'
 import { compress, decompress } from 'lz-string'
 import copy from 'copy-to-clipboard'
-import { store } from './redux'
+import { store } from '../redux'
 
 // const loremIpsum = `
 // Lorem ipsum dolor amet cray butcher asymmetrical raw denim. Try-hard vice cray poke. Health goth art party drinking vinegar slow-carb, truffaut gentrify plaid kogi tofu lyft quinoa vice cornhole iPhone. Chia pok pok artisan bespoke, hot chicken VHS cloud bread.

@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from 'redux'
-import logger from 'redux-logger'
+import { createLogger } from 'redux-logger'
 
 // ACTION TYPES
 const SET_NAME = 'SET_NAME'
@@ -23,13 +23,14 @@ export const setCharacterClass = (characterClass) => ({
 const defaultState = {
   name: '',
   race: '',
-  class: '',
+  characterClass: '',
 }
 
 const dispatchers = {
   [SET_NAME]: (state, { name }) => ({...state, name }),
   [SET_RACE]: (state, { race }) => ({...state, race }),
-  [SET_CHARACTER_CLASS]: (state, { characterClass }) => ({...state, characterClass }),
+  [SET_CHARACTER_CLASS]: (state, { characterClass }) =>
+    ({...state, characterClass }),
 }
 
 const reducer = (state = defaultState, action) => {
@@ -39,6 +40,7 @@ const reducer = (state = defaultState, action) => {
   return state
 }
 
+const logger = createLogger({ collapsed: true })
 export const store = createStore(
   reducer,
   applyMiddleware(logger)
