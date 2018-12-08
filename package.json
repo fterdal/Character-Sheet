@@ -2,7 +2,7 @@
   "name": "Mini-React-Router",
   "version": "1.0.0",
   "description": "A Very Minimal React Configuration (with react-router)",
-  "main": "react/index.js",
+  "main": "client/index.js",
   "scripts": {
     "build-watch": "webpack -w",
     "start": "webpack-dev-server"

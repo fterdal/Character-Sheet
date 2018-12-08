@@ -2,7 +2,7 @@ module.exports = {
   mode: 'development',
   entry: [
     'babel-polyfill', // enables async-await
-    './react/index.js',
+    './client/index.js',
   ],
   output: {
     path: __dirname,
@@ -27,4 +27,3 @@ module.exports = {
     extensions: ['*', '.js', '.jsx']
   }
 }
-
