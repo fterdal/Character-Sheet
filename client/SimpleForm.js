@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom'
 import { Base64 } from 'js-base64'
 import { compress, decompress } from 'lz-string'
 import copy from 'copy-to-clipboard'
+import { store } from './redux'
 
 // const loremIpsum = `
 // Lorem ipsum dolor amet cray butcher asymmetrical raw denim. Try-hard vice cray poke. Health goth art party drinking vinegar slow-carb, truffaut gentrify plaid kogi tofu lyft quinoa vice cornhole iPhone. Chia pok pok artisan bespoke, hot chicken VHS cloud bread.
@@ -63,6 +64,7 @@ class SomeForm extends React.Component {
     copy(`http://localhost:8080/${this.state.addressBar}`)
   }
   componentDidMount() {
+    console.log(store.getState())
     this.setState({ addressBar: this.props.history.location.pathname.slice(1) })
   }
   render() {
