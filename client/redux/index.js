@@ -5,6 +5,7 @@ import { createLogger } from 'redux-logger'
 const SET_NAME = 'SET_NAME'
 const SET_RACE = 'SET_RACE'
 const SET_CHARACTER_CLASS = 'SET_CHARACTER_CLASS'
+const SET_ENTIRE_STATE = 'SET_ENTIRE_STATE'
 
 // ACTION CREATORS
 export const setName = (name) => ({
@@ -19,6 +20,10 @@ export const setCharacterClass = (characterClass) => ({
   type: SET_CHARACTER_CLASS,
   characterClass,
 })
+export const setEntireState = (entireState) => ({
+  type: SET_ENTIRE_STATE,
+  entireState,
+})
 
 const defaultState = {
   name: '',
@@ -31,6 +36,7 @@ const dispatchers = {
   [SET_RACE]: (state, { race }) => ({...state, race }),
   [SET_CHARACTER_CLASS]: (state, { characterClass }) =>
     ({...state, characterClass }),
+  [SET_ENTIRE_STATE]: (state, { entireState }) => ({...entireState}),
 }
 
 const reducer = (state = defaultState, action) => {

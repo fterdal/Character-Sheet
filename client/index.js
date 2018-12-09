@@ -5,19 +5,21 @@ import { Provider } from 'react-redux'
 import { store } from './redux'
 import { SimpleForm, CharacterSheet } from './components'
 
-const App = () => (
-  <div>
-    <Router>
+class App extends React.Component {
+  render() {
+    return (
       <div>
-        <CharacterSheet />
+        <Provider store={store}>
+          <Router>
+            <CharacterSheet />
+          </Router>
+        </Provider>
       </div>
-    </Router>
-  </div>
-)
+    )
+  }
+}
 
 render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <App />,
   document.getElementById('app')
 )

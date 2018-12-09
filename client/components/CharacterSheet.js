@@ -1,21 +1,32 @@
 import React from 'react'
-import { setName, setRace, setCharacterClass } from '../redux'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import { setName, setRace, setCharacterClass } from '../redux'
 
 const CharacterSheet = (props) => {
   const {
     name, race, characterClass,
     editName, editRace, editCharacterClass,
   } = props
-  const editField = (e) => {
-
-  }
   return (
     <div>
       <label htmlFor="name">Name: </label>
-      <input name="name" value={name} onChange={({ target: { value } }) => editName(value)} />
-      <h2>Race: {props.race}</h2>
-      <h2>Class: {props.characterClass}</h2>
+      <input
+        name="name"
+        value={name}
+        onChange={({ target: { value } }) => editName(value)} />
+      <br />
+      <label htmlFor="race">Race: </label>
+      <input
+        name="race"
+        value={race}
+        onChange={({ target: { value } }) => editRace(value)} />
+      <br />
+      <label htmlFor="characterClass">Class: </label>
+      <input
+        name="characterClass"
+        value={characterClass}
+        onChange={({ target: { value } }) => editCharacterClass(value)} />
     </div>
   )
 }
@@ -33,4 +44,9 @@ const mapDispatch = (dispatch) => ({
     dispatch(setCharacterClass(characterClass)),
 })
 
-export default connect(mapState, mapDispatch)(CharacterSheet)
+export default withRouter(
+  connect(
+    mapState,
+    mapDispatch
+  )(CharacterSheet)
+)
