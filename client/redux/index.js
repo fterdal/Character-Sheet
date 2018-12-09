@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware } from 'redux'
 import { createLogger } from 'redux-logger'
+import { Base64 } from 'js-base64'
 import { createBrowserHistory } from 'history'
 const history = createBrowserHistory()
 
@@ -52,7 +53,9 @@ const saveToAddressBar = store => next => action => {
   const result = next(action)
   const storeJSON = JSON.stringify(store.getState())
   console.log('storeJSON', storeJSON)
-  // console.log('HISTORY!!!! ', history)
+  const storeURLencoded = Base64.encodeURI(storeJSON)
+  console.log('storeURLencoded', storeURLencoded)
+  history.replace(storeJSON)
   return result
 }
 
