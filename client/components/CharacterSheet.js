@@ -1,7 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import copy from 'copy-to-clipboard'
 import {
+  store,
   setName,
   setRace,
   setCharacterClass,
@@ -23,6 +25,10 @@ class CharacterSheet extends React.Component {
       characterClass: 'Cleric',
     })
   }
+  copyLink = () => {
+    const stringifiedState = JSON.stringify(store.getState())
+    copy(`http://localhost:8080/${stringifiedState}`)
+  }
   render() {
     const {
       name, race, characterClass,
@@ -35,6 +41,12 @@ class CharacterSheet extends React.Component {
           onClick={this.setDummyData}
           type="button">
             SET DUMMY DATA
+        </button>
+        <button
+          className="address-button"
+          onClick={this.copyLink}
+          type="button">
+            COPY LINK
         </button>
         <br />
         <label htmlFor="name">Name: </label>
