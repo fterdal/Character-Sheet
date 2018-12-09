@@ -1,5 +1,7 @@
 import { createStore, applyMiddleware } from 'redux'
 import { createLogger } from 'redux-logger'
+import { createBrowserHistory } from 'history'
+const history = createBrowserHistory()
 
 // ACTION TYPES
 const SET_NAME = 'SET_NAME'
@@ -46,8 +48,19 @@ const reducer = (state = defaultState, action) => {
   return state
 }
 
+const saveToAddressBar = store => next => action => {
+  const result = next(action)
+  const storeJSON = JSON.stringify(store.getState())
+  console.log('storeJSON', storeJSON)
+  // console.log('HISTORY!!!! ', history)
+  return result
+}
+
 const logger = createLogger({ collapsed: true })
 export const store = createStore(
   reducer,
-  applyMiddleware(logger)
+  applyMiddleware(
+    logger,
+    saveToAddressBar,
+  )
 )

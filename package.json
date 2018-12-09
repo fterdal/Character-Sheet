@@ -18,6 +18,7 @@
     ]
   },
   "dependencies": {
+    "history": "^4.7.2",
     "lz-string": "^1.4.4",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
