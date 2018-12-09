@@ -1,13 +1,24 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { setName, setRace, setCharacterClass } from '../redux'
+import {
+  store,
+  setName,
+  setRace,
+  setCharacterClass,
+  setEntireState,
+} from '../redux'
 
 const CharacterSheet = (props) => {
   const {
     name, race, characterClass,
     editName, editRace, editCharacterClass,
   } = props
+  setTimeout(() => store.dispatch(setEntireState({
+    name: 'Tom',
+    race: 'Dwarf',
+    characterClass: 'Cleric',
+  })), 1000)
   return (
     <div>
       <label htmlFor="name">Name: </label>
