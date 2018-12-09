@@ -12,11 +12,15 @@ import {
 
 class CharacterSheet extends React.Component {
   componentDidMount() {
-    const addressBar = this.props.history.location.pathname.slice(1)
-    console.log('addressBar', JSON.parse(addressBar))
-    const newState = JSON.parse(addressBar)
-    this.props.editEntireState(newState)
-    // this.setEntire({ addressBar: this.props.history.location.pathname.slice(1) })
+    try {
+      const addressBar = this.props.history.location.pathname.slice(1)
+      console.log('addressBar', JSON.parse(addressBar))
+      const newState = JSON.parse(addressBar)
+      this.props.editEntireState(newState)
+      // this.setEntire({ addressBar: this.props.history.location.pathname.slice(1) })
+    } catch(e) {
+      console.log('OOPS', e.message)
+    }
   }
   setDummyData = () => {
     this.props.editEntireState({
