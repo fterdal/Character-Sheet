@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware } from 'redux'
 import { createLogger } from 'redux-logger'
+import { composeWithDevTools } from 'redux-devtools-extension'
 import { Base64 } from 'js-base64'
 import { createBrowserHistory } from 'history'
 const history = createBrowserHistory()
@@ -62,8 +63,10 @@ const saveToAddressBar = store => next => action => {
 const logger = createLogger({ collapsed: true })
 export const store = createStore(
   reducer,
-  applyMiddleware(
-    logger,
-    saveToAddressBar,
+  composeWithDevTools(
+    applyMiddleware(
+      logger,
+      saveToAddressBar,
+    )
   )
 )
