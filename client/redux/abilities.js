@@ -7,30 +7,12 @@ const SET_WIS = 'SET_WIS'
 const SET_CHA = 'SET_CHA'
 
 // ACTION CREATORS
-export const setStr = (str) => ({
-  type: SET_STR,
-  str,
-})
-export const setDex = (dex) => ({
-  type: SET_DEX,
-  dex,
-})
-export const setCon = (con) => ({
-  type: SET_CON,
-  con,
-})
-export const setInt = (int) => ({
-  type: SET_INT,
-  int,
-})
-export const setWis = (wis) => ({
-  type: SET_WIS,
-  wis,
-})
-export const setCha = (cha) => ({
-  type: SET_CHA,
-  cha,
-})
+export const setStr = (str) => ({ type: SET_STR, str })
+export const setDex = (dex) => ({ type: SET_DEX, dex })
+export const setCon = (con) => ({ type: SET_CON, con })
+export const setInt = (int) => ({ type: SET_INT, int })
+export const setWis = (wis) => ({ type: SET_WIS, wis })
+export const setCha = (cha) => ({ type: SET_CHA, cha })
 
 const defaultState = {
   str: 10,
