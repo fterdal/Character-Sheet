@@ -34,7 +34,7 @@ class CharacterSheet extends React.Component {
   }
   render() {
     const {
-      name, race, characterClass,
+      name, race, charClass,
       editName, editRace, editCharacterClass,
     } = this.props
     return (
@@ -67,17 +67,17 @@ class CharacterSheet extends React.Component {
         <label htmlFor="characterClass">Class: </label>
         <input
           name="characterClass"
-          value={characterClass}
+          value={charClass}
           onChange={({ target: { value } }) => editCharacterClass(value)} />
       </div>
     )
   }
 }
 
-const mapState = ({ name, race, characterClass }) => ({
+const mapState = ({ basics: { name, race, charClass }}) => ({
   name,
   race,
-  characterClass,
+  charClass,
 })
 
 const mapDispatch = (dispatch) => ({
