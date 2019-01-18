@@ -12,7 +12,7 @@ import { abilitiesReducer } from './abilities'
 // const SET_NAME = 'SET_NAME'
 // const SET_RACE = 'SET_RACE'
 // const SET_CHARACTER_CLASS = 'SET_CHARACTER_CLASS'
-// const SET_ENTIRE_STATE = 'SET_ENTIRE_STATE'
+
 
 // ACTION CREATORS
 // export const setName = (name) => ({
@@ -26,10 +26,6 @@ import { abilitiesReducer } from './abilities'
 // export const setCharacterClass = (characterClass) => ({
 //   type: SET_CHARACTER_CLASS,
 //   characterClass,
-// })
-// export const setEntireState = (entireState) => ({
-//   type: SET_ENTIRE_STATE,
-//   entireState,
 // })
 
 // const defaultState = {
@@ -63,19 +59,35 @@ const saveToAddressBar = store => next => action => {
   return result
 }
 
-const reducer = combineReducers({
+const statsReducer = combineReducers({
   basics: basicsReducer,
   abilities: abilitiesReducer,
 })
+
+const SET_ENTIRE_STATE = 'SET_ENTIRE_STATE'
+export const setEntireState = (entireState) => ({
+  type: SET_ENTIRE_STATE,
+  entireState,
+})
+
+const containerReducer = (state, action) => {
+  if (action.type === SET_ENTIRE_STATE) {
+    return action.entireState
+  }
+  return statsReducer(state, action)
+}
 
 /*
   This error popped up when adding a double slash in one of the fields:
   http://localhost:8080/%7B%22name%22:%22Finn%22,%22race%22:%22Elf%22,%22characterClass%22:%22Wizard/%7B%22name%22:%22Finn%22,%22race%22:%22Elf%22,%22characterClass%22:%22Wizard////(Necromancer)%22%7D
 */
 
+export * from './basics'
+export * from './abilities'
+
 const logger = createLogger({ collapsed: true })
 export const store = createStore(
-  reducer,
+  containerReducer,
   composeWithDevTools(
     applyMiddleware(
       logger,

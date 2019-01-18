@@ -6,7 +6,7 @@ const SET_CHAR_CLASS = 'SET_CHAR_CLASS'
 // ACTION CREATORS
 export const setName = (name) => ({ type: SET_NAME, name })
 export const setRace = (race) => ({ type: SET_RACE, race })
-export const setCharClass = (charClass) => ({ type: SET_CLASS, charClass })
+export const setCharClass = (charClass) => ({ type: SET_CHAR_CLASS, charClass })
 
 const defaultState = {
   name: '',
