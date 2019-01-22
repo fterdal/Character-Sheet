@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import copy from 'copy-to-clipboard'
+import Basics from './Basics'
 import {
   store,
   setName,
@@ -52,46 +53,20 @@ class CharacterSheet extends React.Component {
             COPY LINK
         </button>
         <br />
-        <label htmlFor="name">Name: </label>
-        <input
-          name="name"
-          value={name}
-          onChange={({ target: { value } }) => editName(value)} />
-        <br />
-        <label htmlFor="race">Race: </label>
-        <input
-          name="race"
-          value={race}
-          onChange={({ target: { value } }) => editRace(value)} />
-        <br />
-        <label htmlFor="characterClass">Class: </label>
-        <input
-          name="characterClass"
-          value={charClass}
-          onChange={({ target: { value } }) => editCharacterClass(value)} />
+        <Basics />
       </div>
     )
   }
 }
 
-const mapState = ({ basics: { name, race, charClass }}) => ({
-  name,
-  race,
-  charClass,
-})
-
 const mapDispatch = (dispatch) => ({
-  editName: (name) => dispatch(setName(name)),
-  editRace: (race) => dispatch(setRace(race)),
-  editCharacterClass: (characterClass) =>
-    dispatch(setCharClass(characterClass)),
   editEntireState: (entireState) =>
     dispatch(setEntireState(entireState)),
 })
 
 export default withRouter(
   connect(
-    mapState,
+    null,
     mapDispatch
   )(CharacterSheet)
 )
