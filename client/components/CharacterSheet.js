@@ -2,11 +2,13 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import copy from 'copy-to-clipboard'
+import Basics from './Basics'
+import Abilities from './Abilities'
 import {
   store,
   setName,
   setRace,
-  setCharacterClass,
+  setCharClass,
   setEntireState,
 } from '../redux'
 
@@ -17,7 +19,6 @@ class CharacterSheet extends React.Component {
       console.log('addressBar', JSON.parse(addressBar))
       const newState = JSON.parse(addressBar)
       this.props.editEntireState(newState)
-      // this.setEntire({ addressBar: this.props.history.location.pathname.slice(1) })
     } catch(e) {
       console.log('OOPS', e.message)
     }
@@ -35,7 +36,7 @@ class CharacterSheet extends React.Component {
   }
   render() {
     const {
-      name, race, characterClass,
+      name, race, charClass,
       editName, editRace, editCharacterClass,
     } = this.props
     return (
@@ -53,46 +54,21 @@ class CharacterSheet extends React.Component {
             COPY LINK
         </button>
         <br />
-        <label htmlFor="name">Name: </label>
-        <input
-          name="name"
-          value={name}
-          onChange={({ target: { value } }) => editName(value)} />
-        <br />
-        <label htmlFor="race">Race: </label>
-        <input
-          name="race"
-          value={race}
-          onChange={({ target: { value } }) => editRace(value)} />
-        <br />
-        <label htmlFor="characterClass">Class: </label>
-        <input
-          name="characterClass"
-          value={characterClass}
-          onChange={({ target: { value } }) => editCharacterClass(value)} />
+        <Basics />
+        <Abilities />
       </div>
     )
   }
 }
 
-const mapState = ({ name, race, characterClass }) => ({
-  name,
-  race,
-  characterClass,
-})
-
 const mapDispatch = (dispatch) => ({
-  editName: (name) => dispatch(setName(name)),
-  editRace: (race) => dispatch(setRace(race)),
-  editCharacterClass: (characterClass) =>
-    dispatch(setCharacterClass(characterClass)),
   editEntireState: (entireState) =>
     dispatch(setEntireState(entireState)),
 })
 
 export default withRouter(
   connect(
-    mapState,
+    null,
     mapDispatch
   )(CharacterSheet)
 )
