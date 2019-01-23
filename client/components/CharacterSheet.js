@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import copy from 'copy-to-clipboard'
 import Basics from './Basics'
+import Abilities from './Abilities'
 import {
   store,
   setName,
@@ -54,6 +55,7 @@ class CharacterSheet extends React.Component {
         </button>
         <br />
         <Basics />
+        <Abilities />
       </div>
     )
   }
