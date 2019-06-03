@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { setStr, setDex, setCon, setInt, setWis, setCha } from '../redux'
 
+const modifier = score => Math.floor((score - 10) / 2)
+
 import './Abilities.scss'
 const Abilities = props => {
   const {
@@ -35,26 +37,32 @@ const Abilities = props => {
       <div className="ability-score">
         <div>Str</div>
         <input name="str" value={str} type="number" onChange={handleChange} />
+        <div>Mod: {modifier(str)}</div>
       </div>
       <div className="ability-score">
         <div>Dex</div>
         <input name="dex" value={dex} type="number" onChange={handleChange} />
+        <div>Mod: {modifier(dex)}</div>
       </div>
       <div className="ability-score">
         <div>Con</div>
         <input name="con" value={con} type="number" onChange={handleChange} />
+        <div>Mod: {modifier(con)}</div>
       </div>
       <div className="ability-score">
         <div>Int</div>
         <input name="int" value={int} type="number" onChange={handleChange} />
+        <div>Mod: {modifier(int)}</div>
       </div>
       <div className="ability-score">
         <div>Wis</div>
         <input name="wis" value={wis} type="number" onChange={handleChange} />
+        <div>Mod: {modifier(wis)}</div>
       </div>
       <div className="ability-score">
         <div>Cha</div>
         <input name="cha" value={cha} type="number" onChange={handleChange} />
+        <div>Mod: {modifier(cha)}</div>
       </div>
     </div>
   )

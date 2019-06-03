@@ -1,6 +1,10 @@
 .abilities {
-  display: flex;
-  flex-wrap: wrap;
+  // display: flex;
+  // flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  margin: 50px 50px 0px 50px;
 
   input {
     max-width: 50px;
@@ -8,18 +12,19 @@
   }
 
   // Disable the arrows to increment / decrement numbers
-  input::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+  input::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button {
     -webkit-appearance: none;
   }
 
   .ability-score {
     border: 1px solid black;
     margin: 2px;
-    flex: 1;
+    width: 250px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    min-width: 40%;
+    padding: 10px 0px 10px 0px;
   }
 }
