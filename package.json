@@ -1,5 +1,5 @@
 {
-  "name": "Character-Sheet",
+  "name": "character-sheet",
   "version": "1.0.0",
   "description": "What if character sheet but in address bar?!",
   "main": "client/index.js",
