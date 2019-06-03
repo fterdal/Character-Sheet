@@ -6,9 +6,6 @@ import Basics from './Basics'
 import Abilities from './Abilities'
 import {
   store,
-  setName,
-  setRace,
-  setCharClass,
   setEntireState,
 } from '../redux'
 
@@ -23,30 +20,13 @@ class CharacterSheet extends React.Component {
       console.log('OOPS', e.message)
     }
   }
-  setDummyData = () => {
-    this.props.editEntireState({
-      name: 'Tom',
-      race: 'Dwarf',
-      characterClass: 'Cleric',
-    })
-  }
   copyLink = () => {
     const stringifiedState = JSON.stringify(store.getState())
     copy(`http://localhost:8080/${stringifiedState}`)
   }
   render() {
-    const {
-      name, race, charClass,
-      editName, editRace, editCharacterClass,
-    } = this.props
     return (
       <div>
-        <button
-          className="address-button"
-          onClick={this.setDummyData}
-          type="button">
-            SET DUMMY DATA
-        </button>
         <button
           className="address-button"
           onClick={this.copyLink}
