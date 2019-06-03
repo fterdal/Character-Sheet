@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { setName, setRace, setCharClass } from '../redux'
 
-import './Basics.css'
+import './Basics.scss'
 const Basics = props => {
   const {
     name,
@@ -14,32 +14,33 @@ const Basics = props => {
     editCharacterClass,
   } = props
   return (
-    <div className="basics">
-      <div>
-        <label htmlFor="name">Name: </label>
+    <Fragment>
+      <div className="basics-name">
         <input
           name="name"
           value={name}
           onChange={({ target: { value } }) => editName(value)}
         />
       </div>
-      <div>
-        <label htmlFor="race">Race: </label>
-        <input
-          name="race"
-          value={race}
-          onChange={({ target: { value } }) => editRace(value)}
-        />
+      <div className="basics">
+        <div>
+          <label htmlFor="race">Race: </label>
+          <input
+            name="race"
+            value={race}
+            onChange={({ target: { value } }) => editRace(value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="characterClass">Class (level): </label>
+          <input
+            name="characterClass"
+            value={charClass}
+            onChange={({ target: { value } }) => editCharacterClass(value)}
+          />
+        </div>
       </div>
-      <div>
-        <label htmlFor="characterClass">Class: </label>
-        <input
-          name="characterClass"
-          value={charClass}
-          onChange={({ target: { value } }) => editCharacterClass(value)}
-        />
-      </div>
-    </div>
+    </Fragment>
   )
 }
 

@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import { store } from './redux'
 import { CharacterSheet } from './components'
 
+import './global.scss'
 const App = () => {
   return (
     <div>
