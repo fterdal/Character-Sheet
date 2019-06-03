@@ -1,49 +1,40 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import copy from 'copy-to-clipboard'
 import Basics from './Basics'
 import Abilities from './Abilities'
-import {
-  store,
-  setEntireState,
-} from '../redux'
+import { store, setEntireState } from '../redux'
 
-class CharacterSheet extends React.Component {
-  componentDidMount() {
+const CharacterSheet = props => {
+  useEffect(() => {
     try {
-      const addressBar = this.props.history.location.pathname.slice(1)
+      const addressBar = props.history.location.pathname.slice(1)
       console.log('addressBar', JSON.parse(addressBar))
       const newState = JSON.parse(addressBar)
-      this.props.editEntireState(newState)
-    } catch(e) {
+      props.editEntireState(newState)
+    } catch (e) {
       console.log('OOPS', e.message)
     }
-  }
-  copyLink = () => {
+  }, [])
+  const copyLink = () => {
     const stringifiedState = JSON.stringify(store.getState())
     copy(`http://localhost:8080/${stringifiedState}`)
   }
-  render() {
-    return (
-      <div>
-        <button
-          className="address-button"
-          onClick={this.copyLink}
-          type="button">
-            COPY LINK
-        </button>
-        <br />
-        <Basics />
-        <Abilities />
-      </div>
-    )
-  }
+  return (
+    <div>
+      <button className="address-button" onClick={copyLink} type="button">
+        COPY LINK
+      </button>
+      <br />
+      <Basics />
+      <Abilities />
+    </div>
+  )
 }
 
-const mapDispatch = (dispatch) => ({
-  editEntireState: (entireState) =>
-    dispatch(setEntireState(entireState)),
+const mapDispatch = dispatch => ({
+  editEntireState: entireState => dispatch(setEntireState(entireState)),
 })
 
 export default withRouter(

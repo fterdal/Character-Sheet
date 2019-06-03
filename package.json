@@ -5,7 +5,7 @@
   "main": "client/index.js",
   "scripts": {
     "build-watch": "webpack -w",
-    "start": "webpack-dev-server"
+    "devServer": "webpack-dev-server"
   },
   "keywords": [],
   "author": "Finn Terdal",
