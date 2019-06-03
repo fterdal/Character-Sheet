@@ -1,5 +1,25 @@
 .abilities {
+  display: flex;
+  flex-wrap: wrap;
+
   input {
     max-width: 50px;
+    font-size: 16px;
+  }
+
+  // Disable the arrows to increment / decrement numbers
+  input::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+  .ability-score {
+    border: 1px solid black;
+    margin: 2px;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-width: 40%;
   }
 }

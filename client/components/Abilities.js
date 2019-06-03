@@ -32,24 +32,30 @@ const Abilities = props => {
   }
   return (
     <div className="abilities">
-      <label htmlFor="str">Str: </label>
-      <input name="str" value={str} type="number" onChange={handleChange} />
-      <br />
-      <label htmlFor="dex">Dex: </label>
-      <input name="dex" value={dex} type="number" onChange={handleChange} />
-      <br />
-      <label htmlFor="con">Con: </label>
-      <input name="con" value={con} type="number" onChange={handleChange} />
-      <br />
-      <label htmlFor="int">Int: </label>
-      <input name="int" value={int} type="number" onChange={handleChange} />
-      <br />
-      <label htmlFor="wis">Wis: </label>
-      <input name="wis" value={wis} type="number" onChange={handleChange} />
-      <br />
-      <label htmlFor="cha">Cha: </label>
-      <input name="cha" value={cha} type="number" onChange={handleChange} />
-      <br />
+      <div className="ability-score">
+        <div>Str</div>
+        <input name="str" value={str} type="number" onChange={handleChange} />
+      </div>
+      <div className="ability-score">
+        <div>Dex</div>
+        <input name="dex" value={dex} type="number" onChange={handleChange} />
+      </div>
+      <div className="ability-score">
+        <div>Con</div>
+        <input name="con" value={con} type="number" onChange={handleChange} />
+      </div>
+      <div className="ability-score">
+        <div>Int</div>
+        <input name="int" value={int} type="number" onChange={handleChange} />
+      </div>
+      <div className="ability-score">
+        <div>Wis</div>
+        <input name="wis" value={wis} type="number" onChange={handleChange} />
+      </div>
+      <div className="ability-score">
+        <div>Cha</div>
+        <input name="cha" value={cha} type="number" onChange={handleChange} />
+      </div>
     </div>
   )
 }

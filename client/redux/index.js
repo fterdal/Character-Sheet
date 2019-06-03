@@ -13,7 +13,6 @@ import { abilitiesReducer } from './abilities'
 // const SET_RACE = 'SET_RACE'
 // const SET_CHARACTER_CLASS = 'SET_CHARACTER_CLASS'
 
-
 // ACTION CREATORS
 // export const setName = (name) => ({
 //   type: SET_NAME,
@@ -65,7 +64,7 @@ const statsReducer = combineReducers({
 })
 
 const SET_ENTIRE_STATE = 'SET_ENTIRE_STATE'
-export const setEntireState = (entireState) => ({
+export const setEntireState = entireState => ({
   type: SET_ENTIRE_STATE,
   entireState,
 })
@@ -88,10 +87,5 @@ export * from './abilities'
 const logger = createLogger({ collapsed: true })
 export const store = createStore(
   containerReducer,
-  composeWithDevTools(
-    applyMiddleware(
-      logger,
-      saveToAddressBar,
-    )
-  )
+  composeWithDevTools(applyMiddleware(logger, saveToAddressBar))
 )
