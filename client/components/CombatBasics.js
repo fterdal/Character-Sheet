@@ -8,6 +8,7 @@ import {
   setArmorClass,
 } from '../redux'
 import { modifier } from './utils'
+import HitDice from './HitDice'
 
 const CombatBasics = props => {
   const {
@@ -26,6 +27,7 @@ const CombatBasics = props => {
   const initiative = modifier(dex)
   return (
     <div className="combat-basics">
+      <HitDice />
       <div>
         <label htmlFor="currentHP">Initiative: </label>
         <span>{initiative}</span>

@@ -1,9 +1,14 @@
+body {
+  margin: 0px;
+}
+
 * {
   // font-family: sans-serif;
   // font-family: 'Cinzel Decorative', sans-serif;
   // font-family: 'Righteous', cursive, sans-serif;
   font-family: 'Cinzel Decorative', cursive;
   background-color: #efe5d5; /* Olympic Parchment Paper */
+  box-sizing: border-box;
 }
 
 .address-button {

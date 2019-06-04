@@ -49,5 +49,7 @@ export const combatBasicsReducer = (state = defaultState, action) => {
   if (action.type in dispatchers) {
     return dispatchers[action.type](state, action)
   }
+  // TODO: Remove this later. Just for testing things out.
+  state.hitDice = { d6: 2, d10: 1}
   return state
 }
