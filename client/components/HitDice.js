@@ -10,41 +10,44 @@ const hitDiceToString = hitDice =>
 import './HitDice.scss'
 const HitDice = props => {
   const { hitDice } = props
+  const hitDiceStr = hitDiceToString(hitDice)
   console.log(hitDice)
   const [show, setShow] = useState(false)
+  const [numDice, setNumDice] = useState('')
+  const [typeDice, setTypeDice] = useState('d6')
   const handleSubmit = evt => {
     evt.preventDefault()
     console.log('submitting new hit dice')
   }
-  const hitDiceStr = hitDiceToString(hitDice)
+  const handleChange = ({ target: { name, value } }) => {
+    if (name === 'typeDice') return setTypeDice(value)
+    if (name === 'numDice' && value >= 0) {
+      return setNumDice(Number(value))
+    }
+  }
   return (
     <div className="hit-dice">
-      Hit Dice: {hitDiceStr}
+      <span>Hit Dice: {hitDiceStr}</span>
       <button type="button" onClick={() => setShow(!show)}>
         Edit
       </button>
       {show ? (
         <form onSubmit={handleSubmit}>
-          <input className="num-dice-input" name="numDice" type="number" />
-          <select>
-            <option name="typeDice" value="d4">
-              d4
-            </option>
-            <option name="typeDice" value="d6">
-              d6
-            </option>
-            <option name="typeDice" value="d8">
-              d8
-            </option>
-            <option name="typeDice" value="d10">
-              d10
-            </option>
-            <option name="typeDice" value="d12">
-              d12
-            </option>
-            <option name="typeDice" value="d20">
-              d20
-            </option>
+          <input
+            name="numDice"
+            required
+            className="num-dice-input"
+            type="number"
+            onChange={handleChange}
+            value={numDice}
+          />
+          <select name="typeDice" onChange={handleChange}>
+            <option value="d4">d4</option>
+            <option value="d6">d6</option>
+            <option value="d8">d8</option>
+            <option value="d10">d10</option>
+            <option value="d12">d12</option>
+            <option value="d20">d20</option>
           </select>
           <button type="submit">Submit</button>
         </form>

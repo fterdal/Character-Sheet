@@ -36,6 +36,7 @@ const CombatBasics = props => {
       <div>
         <label htmlFor="currentHP">Current HP: </label>
         <input
+          type="number"
           name="currentHP"
           value={currentHP}
           onChange={({ target: { value } }) => editCurrentHP(value)}
@@ -44,6 +45,7 @@ const CombatBasics = props => {
       <div>
         <label htmlFor="maxHP">Max HP: </label>
         <input
+          type="number"
           name="maxHP"
           value={maxHP}
           onChange={({ target: { value } }) => editMaxHP(value)}
@@ -52,6 +54,7 @@ const CombatBasics = props => {
       <div>
         <label htmlFor="prof">Proficiency: </label>
         <input
+          type="number"
           name="prof"
           value={prof}
           onChange={({ target: { value } }) => editProf(value)}
@@ -60,6 +63,7 @@ const CombatBasics = props => {
       <div>
         <label htmlFor="prof">Speed: </label>
         <input
+          type="number"
           name="speed"
           value={speed}
           onChange={({ target: { value } }) => editSpeed(value)}
@@ -68,6 +72,7 @@ const CombatBasics = props => {
       <div>
         <label htmlFor="armorClass">AC: </label>
         <input
+          type="number"
           name="armorClass"
           value={armorClass}
           onChange={({ target: { value } }) => editArmorClass(value)}

@@ -4,17 +4,11 @@
   grid-template-rows: auto;
   // margin: 50px 50px 0px 50px;
   margin: 0px;
-  padding: 0px 50px 0px 50px ;
+  padding: 0px 50px 0px 50px;
   width: 100vw;
   input {
-    max-width: 50px;
+    // max-width: 50px;
     font-size: 16px;
-  }
-
-  // Disable the arrows to increment / decrement numbers
-  input::-webkit-outer-spin-button,
-  input[type='number']::-webkit-inner-spin-button {
-    -webkit-appearance: none;
   }
 
   .ability-score {
