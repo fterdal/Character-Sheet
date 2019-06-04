@@ -25,7 +25,6 @@ const Basics = props => {
       </div>
       <div className="basics">
         <div>
-          {/* <label htmlFor="race">Race: </label> */}
           <input
             name="race"
             value={race}
@@ -34,7 +33,6 @@ const Basics = props => {
           />
         </div>
         <div>
-          {/* <label htmlFor="characterClass">Class (level): </label> */}
           <input
             name="characterClass"
             value={charClass}
