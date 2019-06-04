@@ -1,5 +1,6 @@
 .basics-name {
   display: flex;
+  width: 100vw;
   justify-content: center;
   input {
     font-size: 16px;
@@ -7,6 +8,7 @@
 }
 
 .basics {
+  width: 100vw;
   display: flex;
   justify-content: space-around;
 }

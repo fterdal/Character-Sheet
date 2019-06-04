@@ -10,6 +10,7 @@ import {
 import { modifier } from './utils'
 import HitDice from './HitDice'
 
+import './CombatBasics.scss'
 const CombatBasics = props => {
   const {
     prof,
