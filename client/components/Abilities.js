@@ -2,8 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { setStr, setDex, setCon, setInt, setWis, setCha } from '../redux'
-
-const modifier = score => Math.floor((score - 10) / 2)
+import { modifier } from './utils'
 
 import './Abilities.scss'
 const Abilities = props => {

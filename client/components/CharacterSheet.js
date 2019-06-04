@@ -14,8 +14,8 @@ const CharacterSheet = props => {
       console.log('addressBar', JSON.parse(addressBar))
       const newState = JSON.parse(addressBar)
       props.editEntireState(newState)
-    } catch (e) {
-      console.log('OOPS', e.message)
+    } catch (err) {
+      console.log('OOPS', err.message)
     }
   }, [])
   const copyLink = () => {

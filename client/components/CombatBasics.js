@@ -7,6 +7,7 @@ import {
   setCurrentHP,
   setArmorClass,
 } from '../redux'
+import { modifier } from './utils'
 
 const CombatBasics = props => {
   const {
@@ -20,9 +21,15 @@ const CombatBasics = props => {
     editMaxHP,
     editCurrentHP,
     editArmorClass,
+    dex,
   } = props
+  const initiative = modifier(dex)
   return (
     <div className="combat-basics">
+      <div>
+        <label htmlFor="currentHP">Initiative: </label>
+        <span>{initiative}</span>
+      </div>
       <div>
         <label htmlFor="currentHP">Current HP: </label>
         <input
@@ -69,12 +76,14 @@ const CombatBasics = props => {
 
 const mapState = ({
   combatBasics: { prof, speed, maxHP, currentHP, armorClass },
+  abilities: { dex },
 }) => ({
   prof,
   speed,
   maxHP,
   currentHP,
   armorClass,
+  dex,
 })
 
 const mapDispatch = dispatch => ({
