@@ -23,17 +23,17 @@ export const setArmorClass = armorClass => ({
  * { d6: 3, d10: 1 } for a character with 3d6+1d10 hit dice
  */
 export const setHitDice = hitDice => ({
-  type: SET_ARMOR_CLASS,
+  type: SET_HIT_DICE,
   hitDice,
 })
 
-const defaultState = {
+export const defaultStateCombatBasics = {
   prof: 0,
   speed: 30,
   maxHP: 0,
   currentHP: 0,
   armorClass: 10,
-  hitDice: {},
+  hitDice: { },
 }
 
 const dispatchers = {
@@ -42,14 +42,18 @@ const dispatchers = {
   [SET_MAX_HP]: (state, { maxHP }) => ({ ...state, maxHP }),
   [SET_CURRENT_HP]: (state, { currentHP }) => ({ ...state, currentHP }),
   [SET_ARMOR_CLASS]: (state, { armorClass }) => ({ ...state, armorClass }),
-  [SET_HIT_DICE]: (state, { hitDice }) => ({ ...state, hitDice }),
+  [SET_HIT_DICE]: (state, { hitDice }) => {
+    const newHitDice = Object.entries(hitDice).reduce((acc, [key, val]) => {
+      if (val > 0) return { ...acc, [key]: val }
+      return acc
+    }, {})
+    return { ...state, hitDice: newHitDice }
+  },
 }
 
-export const combatBasicsReducer = (state = defaultState, action) => {
+export const combatBasicsReducer = (state = defaultStateCombatBasics, action) => {
   if (action.type in dispatchers) {
     return dispatchers[action.type](state, action)
   }
-  // TODO: Remove this later. Just for testing things out.
-  state.hitDice = { d6: 2, d10: 1}
   return state
 }

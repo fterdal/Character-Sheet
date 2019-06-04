@@ -27,7 +27,6 @@ const CharacterSheet = props => {
       <button className="address-button" onClick={copyLink} type="button">
         COPY LINK
       </button>
-      <br />
       <Basics />
       <CombatBasics />
       <Abilities />

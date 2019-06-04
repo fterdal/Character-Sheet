@@ -19,23 +19,26 @@ const Basics = props => {
         <input
           name="name"
           value={name}
+          placeholder="Name"
           onChange={({ target: { value } }) => editName(value)}
         />
       </div>
       <div className="basics">
         <div>
-          <label htmlFor="race">Race: </label>
+          {/* <label htmlFor="race">Race: </label> */}
           <input
             name="race"
             value={race}
+            placeholder="Race"
             onChange={({ target: { value } }) => editRace(value)}
           />
         </div>
         <div>
-          <label htmlFor="characterClass">Class (level): </label>
+          {/* <label htmlFor="characterClass">Class (level): </label> */}
           <input
             name="characterClass"
             value={charClass}
+            placeholder="Class (Level)"
             onChange={({ target: { value } }) => editCharacterClass(value)}
           />
         </div>

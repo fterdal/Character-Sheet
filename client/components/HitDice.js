@@ -9,15 +9,17 @@ const hitDiceToString = hitDice =>
 
 import './HitDice.scss'
 const HitDice = props => {
-  const { hitDice } = props
+  const { hitDice, editHitDice } = props
   const hitDiceStr = hitDiceToString(hitDice)
-  console.log(hitDice)
   const [show, setShow] = useState(false)
   const [numDice, setNumDice] = useState('')
   const [typeDice, setTypeDice] = useState('d6')
   const handleSubmit = evt => {
     evt.preventDefault()
-    console.log('submitting new hit dice')
+    editHitDice({
+      ...hitDice,
+      [typeDice]: numDice
+    })
   }
   const handleChange = ({ target: { name, value } }) => {
     if (name === 'typeDice') return setTypeDice(value)
@@ -41,7 +43,7 @@ const HitDice = props => {
             onChange={handleChange}
             value={numDice}
           />
-          <select name="typeDice" onChange={handleChange}>
+          <select defaultValue="d6" name="typeDice" onChange={handleChange}>
             <option value="d4">d4</option>
             <option value="d6">d6</option>
             <option value="d8">d8</option>

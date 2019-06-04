@@ -14,7 +14,7 @@ export const setInt = (int) => ({ type: SET_INT, int })
 export const setWis = (wis) => ({ type: SET_WIS, wis })
 export const setCha = (cha) => ({ type: SET_CHA, cha })
 
-const defaultState = {
+export const defaultStateAbilities = {
   str: 10,
   dex: 10,
   con: 10,
@@ -32,7 +32,7 @@ const dispatchers = {
   [SET_CHA]: (state, { cha }) => ({...state, cha }),
 }
 
-export const abilitiesReducer = (state = defaultState, action) => {
+export const abilitiesReducer = (state = defaultStateAbilities, action) => {
   if (action.type in dispatchers) {
     return dispatchers[action.type](state, action)
   }
