@@ -5,6 +5,7 @@ import copy from 'copy-to-clipboard'
 import Basics from './Basics'
 import Abilities from './Abilities'
 import { store, setEntireState } from '../redux'
+import CombatBasics from './CombatBasics'
 
 const CharacterSheet = props => {
   useEffect(() => {
@@ -28,6 +29,7 @@ const CharacterSheet = props => {
       </button>
       <br />
       <Basics />
+      <CombatBasics />
       <Abilities />
     </div>
   )

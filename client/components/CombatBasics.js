@@ -1,63 +1,91 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
-import { setName, setRace, setCharClass } from '../redux'
+import {
+  setProf,
+  setSpeed,
+  setMaxHP,
+  setCurrentHP,
+  setArmorClass,
+} from '../redux'
 
 const CombatBasics = props => {
   const {
-    name,
-    race,
-    charClass,
-    editName,
-    editRace,
-    editCharacterClass,
+    prof,
+    speed,
+    maxHP,
+    currentHP,
+    armorClass,
+    editProf,
+    editSpeed,
+    editMaxHP,
+    editCurrentHP,
+    editArmorClass,
   } = props
   return (
-    <Fragment>
-      <div className="basics-name">
+    <div className="combat-basics">
+      <div>
+        <label htmlFor="currentHP">Current HP: </label>
         <input
-          name="name"
-          value={name}
-          onChange={({ target: { value } }) => editName(value)}
+          name="currentHP"
+          value={currentHP}
+          onChange={({ target: { value } }) => editCurrentHP(value)}
         />
       </div>
-      <div className="basics">
-        <div>
-          <label htmlFor="race">Race: </label>
-          <input
-            name="race"
-            value={race}
-            onChange={({ target: { value } }) => editRace(value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="characterClass">Class (level): </label>
-          <input
-            name="characterClass"
-            value={charClass}
-            onChange={({ target: { value } }) => editCharacterClass(value)}
-          />
-        </div>
+      <div>
+        <label htmlFor="maxHP">Max HP: </label>
+        <input
+          name="maxHP"
+          value={maxHP}
+          onChange={({ target: { value } }) => editMaxHP(value)}
+        />
       </div>
-    </Fragment>
+      <div>
+        <label htmlFor="prof">Proficiency: </label>
+        <input
+          name="prof"
+          value={prof}
+          onChange={({ target: { value } }) => editProf(value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="prof">Speed: </label>
+        <input
+          name="speed"
+          value={speed}
+          onChange={({ target: { value } }) => editSpeed(value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="armorClass">AC: </label>
+        <input
+          name="armorClass"
+          value={armorClass}
+          onChange={({ target: { value } }) => editArmorClass(value)}
+        />
+      </div>
+    </div>
   )
 }
 
-const mapState = ({ basics: { name, race, charClass } }) => ({
-  name,
-  race,
-  charClass,
+const mapState = ({
+  combatBasics: { prof, speed, maxHP, currentHP, armorClass },
+}) => ({
+  prof,
+  speed,
+  maxHP,
+  currentHP,
+  armorClass,
 })
 
 const mapDispatch = dispatch => ({
-  editName: name => dispatch(setName(name)),
-  editRace: race => dispatch(setRace(race)),
-  editCharacterClass: characterClass => dispatch(setCharClass(characterClass)),
+  editProf: prof => dispatch(setProf(prof)),
+  editSpeed: speed => dispatch(setSpeed(speed)),
+  editMaxHP: maxHP => dispatch(setMaxHP(maxHP)),
+  editCurrentHP: currentHP => dispatch(setCurrentHP(currentHP)),
+  editArmorClass: armorClass => dispatch(setArmorClass(armorClass)),
 })
 
-export default withRouter(
-  connect(
-    mapState,
-    mapDispatch
-  )(CombatBasics)
-)
+export default connect(
+  mapState,
+  mapDispatch
+)(CombatBasics)

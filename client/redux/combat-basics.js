@@ -6,7 +6,7 @@ const SET_CURRENT_HP = 'SET_CURRENT_HP'
 const SET_ARMOR_CLASS = 'SET_ARMOR_CLASS'
 
 // ACTION CREATORS
-export const setProficiency = prof => ({ type: SET_PROFICIENCY, prof })
+export const setProf = prof => ({ type: SET_PROFICIENCY, prof })
 export const setSpeed = speed => ({ type: SET_SPEED, speed })
 export const setMaxHP = maxHP => ({ type: SET_MAX_HP, maxHP })
 export const setCurrentHP = currentHP => ({ type: SET_CURRENT_HP, currentHP })
@@ -24,7 +24,7 @@ const defaultState = {
 }
 
 const dispatchers = {
-  [SET_PROFICIENCY]: (state, { proficiency }) => ({ ...state, proficiency }),
+  [SET_PROFICIENCY]: (state, { prof }) => ({ ...state, prof }),
   [SET_SPEED]: (state, { speed }) => ({ ...state, speed }),
   [SET_MAX_HP]: (state, { maxHP }) => ({ ...state, maxHP }),
   [SET_CURRENT_HP]: (state, { currentHP }) => ({ ...state, currentHP }),
