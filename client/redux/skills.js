@@ -34,95 +34,113 @@ const SET_SINGLE_SKILL = 'SET_SINGLE_SKILL'
 
 // ACTION CREATORS
 export const setSkills = skills => ({ type: SET_SKILLS, skills })
-// Expects skill to look like { Athletics: { profBonus: 1, misc: 3 } }
+// Expects skill to look like { skillName: 'Athletics', profBonus: 1, misc: 3 }
 export const setSingleSkill = skill => ({ type: SET_SINGLE_SKILL, skill })
 
 // In most cases, the proficiency bonus does not apply to a skill.
 // In some cases, it applies 1/2 or 2x. So the profBonus is how much
 // to multiply the proficiency bonus by.
 export const defaultStateSkills = {
-  str: {
-    Athletics: {
+  str: [
+    {
+      skillName: 'Athletics',
       profBonus: 0,
       misc: 0,
     },
-  },
-  dex: {
-    Acrobatics: {
+  ],
+  dex: [
+    {
+      skillName: 'Acrobatics',
       profBonus: 0,
       misc: 0,
     },
-    'Sleight of Hand': {
+    {
+      skillName: 'Sleight of Hand',
       profBonus: 0,
       misc: 0,
     },
-    Stealth: {
+    {
+      skillName: 'Stealth',
       profBonus: 0,
       misc: 0,
     },
-  },
-  int: {
-    Arcana: {
+  ],
+  int: [
+    {
+      skillName: 'Arcana',
       profBonus: 0,
       misc: 0,
     },
-    History: {
+    {
+      skillName: 'History',
       profBonus: 0,
       misc: 0,
     },
-    Investigation: {
+    {
+      skillName: 'Investigation',
       profBonus: 0,
       misc: 0,
     },
-    Nature: {
+    {
+      skillName: 'Nature',
       profBonus: 0,
       misc: 0,
     },
-    Religion: {
+    {
+      skillName: 'Religion',
       profBonus: 0,
       misc: 0,
     },
-  },
-  wis: {
-    'Animal Handling': {
+  ],
+  wis: [
+    {
+      skillName: 'Animal Handling',
       profBonus: 0,
       misc: 0,
     },
-    Insight: {
+    {
+      skillName: 'Insight',
       profBonus: 0,
       misc: 0,
     },
-    Medicine: {
+    {
+      skillName: 'Medicine',
       profBonus: 0,
       misc: 0,
     },
-    Perception: {
+    {
+      skillName: 'Perception',
       profBonus: 0,
       misc: 0,
     },
-    Survival: {
+    {
+      skillName: 'Survival',
       profBonus: 0,
       misc: 0,
     },
-  },
-  cha: {
-    Deception: {
+  ],
+  cha: [
+    {
+      skillName: 'Deception',
       profBonus: 0,
       misc: 0,
     },
-    Intimidation: {
+    {
+      skillName: 'Intimidation',
       profBonus: 0,
       misc: 0,
     },
-    Performance: {
+    {
+      skillName: 'Performance',
       profBonus: 0,
       misc: 0,
     },
-    Persuasion: {
+    {
+      skillName: 'Persuasion',
       profBonus: 0,
       misc: 0,
     },
-  },
+  ],
 }
 
 const skillNameIndex = {
@@ -154,14 +172,14 @@ const skillNameIndex = {
 const dispatchers = {
   [SET_SKILLS]: (state, { skills }) => skills,
   [SET_SINGLE_SKILL]: (state, { skill }) => {
-    const [skillName] = Object.keys(skill)
+    const { skillName } = skill
     const skillAbility = skillNameIndex[skillName]
     return {
       ...state,
-      [skillAbility]: {
-        ...state[skillAbility],
-        ...skill,
-      },
+      [skillAbility]: state[skillAbility].map(currentSkill => {
+        if (currentSkill.skillName !== skillName) return currentSkill
+        return skill
+      })
     }
   },
 }
