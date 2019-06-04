@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { modifier, modifierStr } from './utils'
 
 const Skills = props => {
-  const { str, dex, con, int, wis, cha, skills } = props
+  const { str, dex, int, wis, cha, skills } = props
   const { str: strSkills } = skills
   console.log(strSkills)
   // const handleChange = ({ target: { name, value } }) => {}
@@ -11,13 +11,13 @@ const Skills = props => {
     <div>
       Skills:
       <div>
-        <div>
-          Strength {modifierStr(str)}
-        </div>
+        <div>Strength {modifierStr(str)}</div>
         <table>
-          <tr>
-            <td></td>
-          </tr>
+          <tbody>
+            <tr>
+              <td />
+            </tr>
+          </tbody>
         </table>
       </div>
       {/* <div></div> */}
@@ -37,10 +37,9 @@ const Skills = props => {
   )
 }
 
-const mapState = ({ abilities: { str, dex, con, int, wis, cha }, skills }) => ({
+const mapState = ({ abilities: { str, dex, int, wis, cha }, skills }) => ({
   str,
   dex,
-  con,
   int,
   wis,
   cha,
