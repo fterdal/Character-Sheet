@@ -6,6 +6,7 @@ import Basics from './Basics'
 import Abilities from './Abilities'
 import { store, setEntireState } from '../redux'
 import CombatBasics from './CombatBasics'
+import Skills from './Skills'
 
 const CharacterSheet = props => {
   useEffect(() => {
@@ -30,6 +31,7 @@ const CharacterSheet = props => {
       <Basics />
       <CombatBasics />
       <Abilities />
+      <Skills />
     </div>
   )
 }

@@ -8,6 +8,7 @@ const history = createBrowserHistory()
 import { basicsReducer } from './basics'
 import { abilitiesReducer } from './abilities'
 import { combatBasicsReducer } from './combat-basics'
+import { skillsReducer } from './skills'
 
 const saveToAddressBar = store => next => action => {
   const result = next(action)
@@ -20,6 +21,7 @@ const statsReducer = combineReducers({
   basics: basicsReducer,
   abilities: abilitiesReducer,
   combatBasics: combatBasicsReducer,
+  skills: skillsReducer,
 })
 
 const SET_ENTIRE_STATE = 'SET_ENTIRE_STATE'
@@ -43,6 +45,7 @@ const containerReducer = (state, action) => {
 export * from './basics'
 export * from './abilities'
 export * from './combat-basics'
+export * from './skills'
 
 const logger = createLogger({ collapsed: true })
 export const store = createStore(
