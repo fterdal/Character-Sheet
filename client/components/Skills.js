@@ -1,6 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { modifier, modifierStr } from './utils'
+import { modifier, modifierString } from './utils'
+
+// Given proficiency
+const calculateSkillMod = () => {
+
+}
 
 const Skills = props => {
   const { str, dex, int, wis, cha, skills } = props
@@ -11,11 +16,29 @@ const Skills = props => {
     <div>
       Skills:
       <div>
-        <div>Strength {modifierStr(str)}</div>
+        <div>Strength {modifierString(str)}</div>
         <table>
           <tbody>
             <tr>
-              <td />
+              <th>&nbsp;</th>
+              <th>Proficiency</th>
+              <th>Misc</th>
+              <th>Total</th>
+            </tr>
+            <tr>
+              <td>Athletics</td>
+              <td>
+                <select defaultValue={0}>
+                  <option value={0}>Not proficient</option>
+                  <option value={0.5}>Half proficiency</option>
+                  <option value={1}>Proficient</option>
+                  <option value={2}>Double proficiency</option>
+                </select>
+              </td>
+              <td>
+                <input defaultValue={0} type="number" />
+              </td>
+              <td>{modifierString(str)}</td>
             </tr>
           </tbody>
         </table>
@@ -37,13 +60,14 @@ const Skills = props => {
   )
 }
 
-const mapState = ({ abilities: { str, dex, int, wis, cha }, skills }) => ({
+const mapState = ({ abilities: { str, dex, int, wis, cha }, skills, combatBasics: { prof } }) => ({
   str,
   dex,
   int,
   wis,
   cha,
   skills,
+  prof,
 })
 
 // const mapDispatch = dispatch => ({
