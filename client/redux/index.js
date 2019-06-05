@@ -20,7 +20,7 @@ const saveToAddressBar = store => next => action => {
   const result = next(action)
   const storeJSON = JSON.stringify(store.getState())
   console.log('storeJSON length', storeJSON.length)
-  history.replace(storeJSON)
+  history.replace(`?${storeJSON}`)
   return result
 }
 

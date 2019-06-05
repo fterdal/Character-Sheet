@@ -11,7 +11,14 @@ import Skills from './Skills'
 const CharacterSheet = props => {
   useEffect(() => {
     try {
-      const addressBar = props.history.location.pathname.slice(1)
+      // const addressBar = props.history.location.pathname.slice(2)
+      const addressBar1 = props.history.location.search.slice(1)
+      const addressBar = decodeURI(addressBar1)
+      // console.log('addressBar', decodeURI(addressBar))
+      // console.log(
+      //   'props.history.location.search:',
+      //   props.history.location.search
+      // )
       console.log('addressBar', JSON.parse(addressBar))
       const newState = JSON.parse(addressBar)
       props.editEntireState(newState)

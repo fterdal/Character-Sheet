@@ -9,22 +9,18 @@ import {
 import { setSingleSkill } from '../redux'
 
 const AbilitySkills = props => {
-  // const { str, dex, int, wis, cha, skills, prof } = props
-  // const strSkills = skills.filter(sk => sk.ability === 'str')
-  // const dexSkills = skills.filter(sk => sk.ability === 'dex')
-  const { prof, abilityScore, ability, skills } = props
+  const { prof, abilityScore, ability, skills, editSingleSkill } = props
 
-  const calculateSkillMod = (abilityScore, prof, profBonus, misc) =>
-    abilityModifier(abilityScore) + prof * profBonus + misc
-  console.log('props', props)
+  const calculateSkillMod = (profBonus, misc) =>
+    modifierString(
+      abilityModifier(abilityScore) + Math.floor(prof * profBonus) + misc
+    )
 
   const handleChange = ({ target: { name, value } }, skill) => {
-    // console.log('name', name)
-    // console.log('value', value)
-    if (name === 'misc') {
-      props.editSingleSkill({
+    if (['misc', 'profBonus'].includes(name)) {
+      editSingleSkill({
         ...skill,
-        misc: Number(value),
+        [name]: Number(value),
       })
     }
   }
@@ -65,14 +61,7 @@ const AbilitySkills = props => {
                     type="number"
                   />
                 </td>
-                <td>
-                  {calculateSkillMod(
-                    abilityScore,
-                    prof,
-                    skill.profBonus,
-                    skill.misc
-                  )}
-                </td>
+                <td>{calculateSkillMod(skill.profBonus, skill.misc)}</td>
               </tr>
             ))}
           </tbody>
@@ -83,14 +72,10 @@ const AbilitySkills = props => {
 }
 
 const mapState = ({ abilities, skills, combatBasics: { prof } }, ownProps) => ({
-  // skills,
   prof,
-  // header: ownProps.header,
-  // abilitySkills: {
   ability: ownProps.ability,
   abilityScore: abilities[ownProps.ability],
   skills: skills.filter(sk => sk.ability === ownProps.ability),
-  // },
 })
 
 const mapDispatch = dispatch => ({
