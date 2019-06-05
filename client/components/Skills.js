@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { abilityModifier, abilityModifierString, modifierString } from './utils'
 import { setSingleSkill } from '../redux'
+import AbilitySkills from './AbilitySkills'
 
 // Given proficiency
 const calculateSkillMod = () => {}
@@ -10,7 +11,7 @@ const Skills = props => {
   const { str, dex, int, wis, cha, skills } = props
   const strSkills = skills.filter(sk => sk.ability === 'str')
   const dexSkills = skills.filter(sk => sk.ability === 'dex')
-  console.log(strSkills)
+  // console.log(strSkills)
   const handleChange = ({ target: { name, value } }, skill) => {
     // DO THINGS HERE
     console.log('name', name)
@@ -24,7 +25,12 @@ const Skills = props => {
   }
   return (
     <div>
-      <div>
+      <AbilitySkills ability="str" />
+      <AbilitySkills ability="dex" />
+      <AbilitySkills ability="int" />
+      <AbilitySkills ability="wis" />
+      <AbilitySkills ability="cha" />
+      {/* <div>
         <h2>Dexterity {abilityModifierString(dex)}</h2>
         <table>
           <tbody>
@@ -90,7 +96,7 @@ const Skills = props => {
             </tr>
           </tbody>
         </table>
-      </div>
+      </div> */}
     </div>
   )
 }

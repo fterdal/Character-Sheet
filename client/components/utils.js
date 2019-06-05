@@ -6,3 +6,14 @@ export const abilityModifierString = score => {
 export const modifierString = score => {
   return score > 0 ? '+' + score : '' + score
 }
+
+export const abilityName = ability => (
+  {
+    str: 'Strength',
+    dex: 'Dexterity',
+    con: 'Constitution',
+    int: 'Intelligence',
+    wis: 'Wisdom',
+    cha: 'Charisma',
+  }[ability]
+)
