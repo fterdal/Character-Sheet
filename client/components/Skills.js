@@ -43,7 +43,7 @@ const Skills = props => {
                     value={dexSkill.profBonus}
                     onChange={evt => handleChange(evt, dexSkill)}
                   >
-                    <option value={0}>Not proficient</option>
+                    <option value={0}>-</option>
                     <option value={0.5}>Half proficiency</option>
                     <option value={1}>Proficient</option>
                     <option value={2}>Double proficiency</option>

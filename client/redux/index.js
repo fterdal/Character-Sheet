@@ -11,8 +11,15 @@ import { combatBasicsReducer } from './combat-basics'
 import { skillsReducer } from './skills'
 
 const saveToAddressBar = store => next => action => {
+  // NOTE: Consider setting up a throttle here, wherein every few seconds
+  // it uses push instead of replace. In this way, the user will have a record
+  // of changes in their browser history (press 'back' to undo changes)
+
+  // ALSO: Consider using something like MessagePack to compress to address bar
+  // https://msgpack.org/index.html
   const result = next(action)
   const storeJSON = JSON.stringify(store.getState())
+  console.log('storeJSON length', storeJSON.length)
   history.replace(storeJSON)
   return result
 }
