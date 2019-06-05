@@ -9,7 +9,7 @@ const calculateSkillMod = () => {
 
 const Skills = props => {
   const { str, dex, int, wis, cha, skills } = props
-  const { str: strSkills } = skills
+  const strSkills = skills.filter(sk => sk.ability === 'str')
   console.log(strSkills)
   // const handleChange = ({ target: { name, value } }) => {}
   return (
