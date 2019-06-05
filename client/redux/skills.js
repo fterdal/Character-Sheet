@@ -50,7 +50,7 @@ export const defaultStateSkills = [
     name: 'Acrobatics',
     profBonus: 0,
     ability: 'dex',
-    misc: 0,
+    misc: 10,
   },
   {
     name: 'Sleight of Hand',

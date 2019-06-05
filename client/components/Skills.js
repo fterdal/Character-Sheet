@@ -1,22 +1,70 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { modifier, modifierString } from './utils'
+import { abilityModifier, abilityModifierString, modifierString } from './utils'
+import { setSingleSkill } from '../redux'
 
 // Given proficiency
-const calculateSkillMod = () => {
-
-}
+const calculateSkillMod = () => {}
 
 const Skills = props => {
   const { str, dex, int, wis, cha, skills } = props
   const strSkills = skills.filter(sk => sk.ability === 'str')
+  const dexSkills = skills.filter(sk => sk.ability === 'dex')
   console.log(strSkills)
-  // const handleChange = ({ target: { name, value } }) => {}
+  const handleChange = ({ target: { name, value } }, skill) => {
+    // DO THINGS HERE
+    console.log('name', name)
+    console.log('value', value)
+    if (name === 'misc') {
+      props.editSingleSkill({
+        ...skill,
+        misc: Number(value),
+      })
+    }
+  }
   return (
     <div>
-      Skills:
       <div>
-        <div>Strength {modifierString(str)}</div>
+        <h2>Dexterity {abilityModifierString(dex)}</h2>
+        <table>
+          <tbody>
+            <tr>
+              <th>&nbsp;</th>
+              <th>Proficiency</th>
+              <th>Misc</th>
+              <th>Total</th>
+            </tr>
+            {dexSkills.map(dexSkill => (
+              <tr key={dexSkill.name}>
+                <td>{dexSkill.name}</td>
+                <td>
+                  <select
+                    name="profBonus"
+                    value={dexSkill.profBonus}
+                    onChange={evt => handleChange(evt, dexSkill)}
+                  >
+                    <option value={0}>Not proficient</option>
+                    <option value={0.5}>Half proficiency</option>
+                    <option value={1}>Proficient</option>
+                    <option value={2}>Double proficiency</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    name="misc"
+                    value={dexSkill.misc}
+                    onChange={evt => handleChange(evt, dexSkill)}
+                    type="number"
+                  />
+                </td>
+                <td>{modifierString(abilityModifier(dex) + dexSkill.misc)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h2>Strength {abilityModifierString(str)}</h2>
         <table>
           <tbody>
             <tr>
@@ -38,29 +86,20 @@ const Skills = props => {
               <td>
                 <input defaultValue={0} type="number" />
               </td>
-              <td>{modifierString(str)}</td>
+              <td>{abilityModifierString(str)}</td>
             </tr>
           </tbody>
         </table>
       </div>
-      {/* <div></div> */}
-      {/* <table className="skills">
-        <tbody>
-          <tr>
-            <th scope="col">Skill</th>
-            <th scope="col">Proficient</th>
-            <th scope="col">Ability Mod</th>
-            <th scope="col">Misc Mod</th>
-            <th scope="col">Total Mod</th>
-          </tr>
-          <tr />
-        </tbody>
-      </table> */}
     </div>
   )
 }
 
-const mapState = ({ abilities: { str, dex, int, wis, cha }, skills, combatBasics: { prof } }) => ({
+const mapState = ({
+  abilities: { str, dex, int, wis, cha },
+  skills,
+  combatBasics: { prof },
+}) => ({
   str,
   dex,
   int,
@@ -70,16 +109,11 @@ const mapState = ({ abilities: { str, dex, int, wis, cha }, skills, combatBasics
   prof,
 })
 
-// const mapDispatch = dispatch => ({
-//   editStr: str => dispatch(setStr(str)),
-//   editDex: dex => dispatch(setDex(dex)),
-//   editCon: con => dispatch(setCon(con)),
-//   editInt: int => dispatch(setInt(int)),
-//   editWis: wis => dispatch(setWis(wis)),
-//   editCha: cha => dispatch(setCha(cha)),
-// })
+const mapDispatch = dispatch => ({
+  editSingleSkill: skill => dispatch(setSingleSkill(skill)),
+})
 
 export default connect(
-  mapState
-  // mapDispatch
+  mapState,
+  mapDispatch
 )(Skills)

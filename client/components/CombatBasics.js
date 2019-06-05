@@ -7,7 +7,7 @@ import {
   setCurrentHP,
   setArmorClass,
 } from '../redux'
-import { modifier } from './utils'
+import { abilityModifier } from './utils'
 import HitDice from './HitDice'
 
 import './CombatBasics.scss'
@@ -25,7 +25,7 @@ const CombatBasics = props => {
     editArmorClass,
     dex,
   } = props
-  const initiative = modifier(dex)
+  const initiative = abilityModifier(dex)
   return (
     <div className="combat-basics">
       <HitDice />
