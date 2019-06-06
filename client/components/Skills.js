@@ -1,8 +1,9 @@
 import React from 'react'
 import AbilitySkills from './AbilitySkills'
 
+import './Skills.scss'
 const Skills = () => (
-    <div>
+    <div className="skills-container">
       <AbilitySkills ability="str" />
       <AbilitySkills ability="dex" />
       <AbilitySkills ability="int" />

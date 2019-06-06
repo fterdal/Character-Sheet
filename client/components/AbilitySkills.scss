@@ -1,0 +1,13 @@
+.ability-skills-container {
+  border: 1px solid black;
+  margin: 2px;
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  table {
+    width: 100%;
+  }
+  .ability-skills-header {
+    background-color: palevioletred;
+  }
+}
