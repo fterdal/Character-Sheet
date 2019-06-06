@@ -27,10 +27,17 @@ const AbilitySkills = props => {
   return (
     <div>
       <div>
-        <h2>
+        {/* <h2>
           {abilityName(ability)} {abilityModifierString(abilityScore)}
-        </h2>
+        </h2> */}
         <table>
+          <thead>
+            <tr>
+              <th colSpan="4">
+                {abilityName(ability)} {abilityModifierString(abilityScore)}
+              </th>
+            </tr>
+          </thead>
           <tbody>
             <tr>
               <th>&nbsp;</th>

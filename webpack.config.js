@@ -12,6 +12,10 @@ module.exports = {
     port: 8080,
     contentBase: './public',
     historyApiFallback: true,
+    // 👇 Do this if you wanna serve openly on the local network:
+    // host: '0.0.0.0',
+    // allowedHosts: ['finns-macbook-pro.local:8080'],
+    // disableHostCheck: true,
   },
   devtool: 'source-map',
   module: {
