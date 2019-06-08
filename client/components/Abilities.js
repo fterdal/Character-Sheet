@@ -34,32 +34,32 @@ const Abilities = props => {
   return (
     <div className="abilities">
       <div className="ability-score">
-        <div>Str</div>
+        <div className="ability-score-name">Str</div>
         <input name="str" value={str} type="number" onChange={handleChange} />
         <div>Mod: {abilityModifierString(str)}</div>
       </div>
       <div className="ability-score">
-        <div>Dex</div>
+        <div className="ability-score-name">Dex</div>
         <input name="dex" value={dex} type="number" onChange={handleChange} />
         <div>Mod: {abilityModifierString(dex)}</div>
       </div>
       <div className="ability-score">
-        <div>Con</div>
+        <div className="ability-score-name">Con</div>
         <input name="con" value={con} type="number" onChange={handleChange} />
         <div>Mod: {abilityModifierString(con)}</div>
       </div>
       <div className="ability-score">
-        <div>Int</div>
+        <div className="ability-score-name">Int</div>
         <input name="int" value={int} type="number" onChange={handleChange} />
         <div>Mod: {abilityModifierString(int)}</div>
       </div>
       <div className="ability-score">
-        <div>Wis</div>
+        <div className="ability-score-name">Wis</div>
         <input name="wis" value={wis} type="number" onChange={handleChange} />
         <div>Mod: {abilityModifierString(wis)}</div>
       </div>
       <div className="ability-score">
-        <div>Cha</div>
+        <div className="ability-score-name">Cha</div>
         <input name="cha" value={cha} type="number" onChange={handleChange} />
         <div>Mod: {abilityModifierString(cha)}</div>
       </div>

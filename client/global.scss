@@ -6,9 +6,11 @@ An alternative, nice color palette:
 https://coolors.co/bfb48f-564e58-904e55-f2efe9-252627
 */
 
+@import "variables";
+
 body {
   margin: 0px;
-  background-color: #efe5d5; /* Olympic Parchment Paper */
+  background-color: $color5;
 }
 
 * {
@@ -17,20 +19,25 @@ body {
   // font-family: 'Righteous', cursive, sans-serif;
   // font-family: 'Cinzel Decorative', cursive;
   box-sizing: border-box;
-  color: #1B065E;
+  color: $color4;
 }
 
 .address-button {
-  background-color: #06bee1; /* Cyan (Process) */
+  background-color: $color3;
 }
 
 input {
   text-align: center;
   background-color: #fff;
+  color: $color5;
 }
 
 input[type='number'] {
   width: 50px;
+}
+
+button {
+  border: none;
 }
 
 // Disable the arrows to increment / decrement numbers

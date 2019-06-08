@@ -1,3 +1,5 @@
+@import '../variables';
+
 .abilities {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -12,7 +14,10 @@
   }
 
   .ability-score {
-    border: 1px solid black;
+    .ability-score-name {
+      color: $color5;
+    }
+    // border: 1px solid black;
     margin: 2px;
     // width: 250px;
     display: flex;
@@ -20,5 +25,6 @@
     align-items: center;
     flex-direction: column;
     padding: 10px 0px 10px 0px;
+    background-color: $color4;
   }
 }

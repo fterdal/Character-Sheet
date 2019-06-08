@@ -1,3 +1,5 @@
+@import "../variables";
+
 .ability-skills-container {
   // border: 1px solid black;
   margin: 5px;
@@ -8,6 +10,6 @@
     width: 100%;
   }
   .ability-skills-header {
-    background-color: palevioletred;
+    background-color: $color2;
   }
 }
