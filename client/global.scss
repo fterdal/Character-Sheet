@@ -6,7 +6,7 @@ An alternative, nice color palette:
 https://coolors.co/bfb48f-564e58-904e55-f2efe9-252627
 */
 
-@import "variables";
+@import 'variables';
 
 body {
   margin: 0px;
@@ -26,7 +26,8 @@ body {
   background-color: $color3;
 }
 
-input {
+input,
+select {
   text-align: center;
   background-color: #fff;
   color: $color5;
