@@ -44,7 +44,7 @@ const AbilitySkills = props => {
           </tr>
           {skills.map(skill => (
             <tr key={skill.name}>
-              <td>{skill.name}</td>
+              <td className="skill-name">{skill.name}</td>
               <td>
                 <select
                   name="profBonus"
@@ -65,7 +65,7 @@ const AbilitySkills = props => {
                   type="number"
                 />
               </td>
-              <td>{calculateSkillMod(skill.profBonus, skill.misc)}</td>
+              <td className="skill-total">{calculateSkillMod(skill.profBonus, skill.misc)}</td>
             </tr>
           ))}
         </tbody>

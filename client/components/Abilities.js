@@ -36,32 +36,32 @@ const Abilities = props => {
       <div className="ability-score">
         <div className="ability-score-name">Str</div>
         <input name="str" value={str} type="number" onChange={handleChange} />
-        <div>Mod: {abilityModifierString(str)}</div>
+        <div className="ability-mod">Mod: {abilityModifierString(str)}</div>
       </div>
       <div className="ability-score">
         <div className="ability-score-name">Dex</div>
         <input name="dex" value={dex} type="number" onChange={handleChange} />
-        <div>Mod: {abilityModifierString(dex)}</div>
+        <div className="ability-mod">Mod: {abilityModifierString(dex)}</div>
       </div>
       <div className="ability-score">
         <div className="ability-score-name">Con</div>
         <input name="con" value={con} type="number" onChange={handleChange} />
-        <div>Mod: {abilityModifierString(con)}</div>
+        <div className="ability-mod">Mod: {abilityModifierString(con)}</div>
       </div>
       <div className="ability-score">
         <div className="ability-score-name">Int</div>
         <input name="int" value={int} type="number" onChange={handleChange} />
-        <div>Mod: {abilityModifierString(int)}</div>
+        <div className="ability-mod">Mod: {abilityModifierString(int)}</div>
       </div>
       <div className="ability-score">
         <div className="ability-score-name">Wis</div>
         <input name="wis" value={wis} type="number" onChange={handleChange} />
-        <div>Mod: {abilityModifierString(wis)}</div>
+        <div className="ability-mod">Mod: {abilityModifierString(wis)}</div>
       </div>
       <div className="ability-score">
         <div className="ability-score-name">Cha</div>
         <input name="cha" value={cha} type="number" onChange={handleChange} />
-        <div>Mod: {abilityModifierString(cha)}</div>
+        <div className="ability-mod">Mod: {abilityModifierString(cha)}</div>
       </div>
     </div>
   )

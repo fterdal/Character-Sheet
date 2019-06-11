@@ -14,9 +14,6 @@
   }
 
   .ability-score {
-    .ability-score-name {
-      color: $color5;
-    }
     // border: 1px solid black;
     margin: 2px;
     // width: 250px;
@@ -26,5 +23,11 @@
     flex-direction: column;
     padding: 10px 0px 10px 0px;
     background-color: $color4;
+    .ability-score-name {
+      color: $color5;
+    }
+    .ability-mod {
+      color: $color5;
+    }
   }
 }

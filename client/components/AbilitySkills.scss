@@ -9,6 +9,13 @@
   table {
     width: 100%;
   }
+  td {
+    text-align: center;
+  }
+  .skill-name {
+    text-align: inherit;
+    width: 120px;
+  }
   .ability-skills-header {
     background-color: $color2;
   }

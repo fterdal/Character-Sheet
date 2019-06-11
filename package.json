@@ -5,15 +5,17 @@
   "main": "client/index.js",
   "scripts": {
     "build-watch": "webpack -w",
-    "devServer": "webpack-dev-server"
+    "dev": "webpack-dev-server",
+    "build": "webpack",
+    "serve": "node serve",
+    "start": "npm run build && npm run serve"
   },
   "keywords": [],
   "author": "Finn Terdal",
   "license": "ISC",
   "babel": {
     "presets": [
-      "react",
-      "stage-2"
+      "@babel/preset-react"
     ]
   },
   "dependencies": {
@@ -22,11 +24,10 @@
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
     "babel-polyfill": "^6.26.0",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
     "copy-to-clipboard": "^3.2.0",
     "css-loader": "^3.0.0",
     "node-sass": "^4.12.0",
