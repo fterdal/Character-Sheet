@@ -28,7 +28,20 @@ const CharacterSheet = props => {
   }, [])
   const copyLink = () => {
     const stringifiedState = JSON.stringify(store.getState())
+    // console.log(`window.location: ${window.location}`)
     copy(`http://localhost:8080/${stringifiedState}`)
+    // const combined = `${window.location}?${stringifiedState}`
+    // console.log(combined)
+
+    // const storeJSON = encodeURI(JSON.stringify(store.getState())).filter(
+    //   char => char !== '?'
+    // )
+    // console.log(encodeURI(storeJSON))
+    // const combined = `http://localhost:8080/?${storeJSON}`
+    // console.log(combined)
+    // copy(combined)
+
+    // copy(combined)
   }
   return (
     <div>
