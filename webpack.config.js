@@ -1,11 +1,14 @@
+const path = require('path')
+const isDev = process.env.MODE === 'DEV'
+
 module.exports = {
-  mode: 'development',
+  mode: isDev ? 'development' : 'production',
   entry: [
     'babel-polyfill', // enables async-await
     './client/index.js',
   ],
   output: {
-    path: __dirname,
+    path: isDev ? __dirname : path.join(__dirname, 'public'),
     filename: './bundle.js',
   },
   devServer: {
@@ -17,7 +20,7 @@ module.exports = {
     // allowedHosts: ['finns-macbook-pro.local:8080'],
     // disableHostCheck: true,
   },
-  devtool: 'source-map',
+  devtool: isDev ? 'source-map' : false,
   module: {
     rules: [
       {

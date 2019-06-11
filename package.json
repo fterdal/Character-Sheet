@@ -5,10 +5,10 @@
   "main": "client/index.js",
   "scripts": {
     "build-watch": "webpack -w",
-    "dev": "webpack-dev-server",
+    "dev": "MODE=DEV webpack-dev-server",
     "build": "webpack",
-    "serve": "node serve",
-    "start": "npm run build && npm run serve"
+    "server": "node server",
+    "start": "npm run build && npm run server"
   },
   "keywords": [],
   "author": "Finn Terdal",
@@ -19,7 +19,9 @@
     ]
   },
   "dependencies": {
+    "express": "^4.17.1",
     "history": "^4.9.0",
+    "morgan": "^1.9.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
