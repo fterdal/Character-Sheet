@@ -1,0 +1,20 @@
+
+language: node_js
+node_js:
+  - node # uses most recent stable node version
+dist: trusty # uses trusty environment
+sudo: false # when on trusty, uses Docker containers for speed
+notifications:
+  email:
+    on_success: change # default: change (only when going from broken to fixed)
+    on_failure: always # default: always (which is annoying, as it should be)
+install:
+  - npm ci # faster, goes only from package-lock
+script:
+  - npm run build # make the bundle
+deploy:
+  skip_cleanup: true # prevents travis from deleting the build
+  provider: heroku
+  app: boiling-waters-12366 # app name on Heroku
+  api_key:
+    secure: "w/M861WzsiIsAkj1YM6zONRcEVj7f+gqF57ctZsiqhMDoMOyQjyJYdmDZaf9QjyiQ/jX743VrG1srfQZ2Rpu4Ipsh+dF/M2/r5MttqX2nbO78qHRMK9hJkresj44Ai2wNZVzO+EUpzbL/VqZSyNktLwKdfTAEqc+mQRi61dbNrIBjz7j5RYP/TP1n5Ep3s/Nw1donjaVk35hohp25o16L0mx1Oon8BAb6AtIz4JBe7i2bPer11YY/Larj28Em8rWvrwhQjHoNoeNrto22OJC0SUOfVapACm93r6SZ/DZSCWCjVKa4v1RIu5xiPZeyeuNx6tiFY6tiOHVYLFZo4B2ld74KiNUaKxLThZgsXqeQJ+mZL8gvrsJJEBMBZ81h3L82RKNIP2dFWYKd3t1AvVjP7nOrC3p6+o7l57tjARYMmIENkeZwoF6sVpOGn8MNSrV5NSASvKnuaz5FsTFuVYN/q7f9BCXOztzPiE7+SMkr4r48SLngssZ6POPo+o0dyVHOYimSn0wBn8XAJzwXWO7LaNoKbeMZK4fsCT3BlNStY4fEqfdjiNKFbnG8w77+/qWJoza2m+LdZMr/QgNHZGCVu74ntMiKdjUjhwPo7hqmlypmGhah9yrfKwO5q7vUBgaspg5UQYEj17EW5jAhfiBZLZepP3IO8fgQUBWh3V/uqw="
