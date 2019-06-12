@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { setStr, setDex, setCon, setInt, setWis, setCha } from '../redux'
 import { abilityModifierString, abilityName } from './utils'
 
+import './AbilityScore.scss'
 const AbilityScore = ({ abilityScore, ability, editAbilityScore }) => {
   console.log(ability, abilityScore)
   const handleChange = ({ target: { value } }) => {
