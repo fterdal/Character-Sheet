@@ -4,45 +4,21 @@ import { withRouter } from 'react-router-dom'
 import copy from 'copy-to-clipboard'
 import Basics from './Basics'
 import Abilities from './Abilities'
-import { store, setEntireState } from '../redux'
+import { setEntireState } from '../redux'
 import CombatBasics from './CombatBasics'
 import Skills from './Skills'
 
 const CharacterSheet = props => {
   useEffect(() => {
     try {
-      // const addressBar = props.history.location.pathname.slice(2)
-      const addressBar1 = props.history.location.search.slice(1)
-      const addressBar = decodeURI(addressBar1)
-      // console.log('addressBar', decodeURI(addressBar))
-      // console.log(
-      //   'props.history.location.search:',
-      //   props.history.location.search
-      // )
-      console.log('addressBar', JSON.parse(addressBar))
+      const addressBar = decodeURI(props.history.location.search.slice(1))
       const newState = JSON.parse(addressBar)
       props.editEntireState(newState)
     } catch (err) {
       console.log('OOPS', err.message)
     }
   }, [])
-  const copyLink = () => {
-    const stringifiedState = JSON.stringify(store.getState())
-    // console.log(`window.location: ${window.location}`)
-    copy(`http://localhost:8080/${stringifiedState}`)
-    // const combined = `${window.location}?${stringifiedState}`
-    // console.log(combined)
-
-    // const storeJSON = encodeURI(JSON.stringify(store.getState())).filter(
-    //   char => char !== '?'
-    // )
-    // console.log(encodeURI(storeJSON))
-    // const combined = `http://localhost:8080/?${storeJSON}`
-    // console.log(combined)
-    // copy(combined)
-
-    // copy(combined)
-  }
+  const copyLink = () => copy(window.location.href)
   return (
     <div>
       <button className="address-button" onClick={copyLink} type="button">
