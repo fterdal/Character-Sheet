@@ -11,7 +11,6 @@ import { setSingleSkill } from '../redux'
 import './AbilitySkills.scss'
 const AbilitySkills = props => {
   const { prof, abilityScore, ability, skills, editSingleSkill } = props
-  console.log(ability)
 
   const calculateSkillMod = (profBonus, misc) =>
     modifierString(

@@ -5,7 +5,6 @@ import { abilityModifierString, abilityName } from './utils'
 
 import './AbilityScore.scss'
 const AbilityScore = ({ abilityScore, ability, editAbilityScore }) => {
-  console.log(ability, abilityScore)
   const handleChange = ({ target: { value } }) => {
     editAbilityScore(value)
   }
