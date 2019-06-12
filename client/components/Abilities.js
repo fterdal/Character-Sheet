@@ -1,8 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import AbilityScore from './AbilityScore'
 import { setStr, setDex, setCon, setInt, setWis, setCha } from '../redux'
-import { abilityModifierString } from './utils'
+import { abilityModifierString, abilityName } from './utils'
+
+const SingleAbility = ({ ability, name }) => {
+  return (
+    <div className="ability-score">
+      <div className="ability-score-name">{name}</div>
+      <input name="str" value={str} type="number" onChange={handleChange} />
+      <div className="ability-mod">Mod: {abilityModifierString(str)}</div>
+    </div>
+  )
+}
 
 import './Abilities.scss'
 const Abilities = props => {
@@ -33,7 +44,13 @@ const Abilities = props => {
   }
   return (
     <div className="abilities">
-      <div className="ability-score">
+      <AbilityScore ability="str" />
+      <AbilityScore ability="dex" />
+      <AbilityScore ability="con" />
+      <AbilityScore ability="int" />
+      <AbilityScore ability="wis" />
+      <AbilityScore ability="cha" />
+      {/* <div className="ability-score">
         <div className="ability-score-name">Str</div>
         <input name="str" value={str} type="number" onChange={handleChange} />
         <div className="ability-mod">Mod: {abilityModifierString(str)}</div>
@@ -62,7 +79,7 @@ const Abilities = props => {
         <div className="ability-score-name">Cha</div>
         <input name="cha" value={cha} type="number" onChange={handleChange} />
         <div className="ability-mod">Mod: {abilityModifierString(cha)}</div>
-      </div>
+      </div> */}
     </div>
   )
 }
