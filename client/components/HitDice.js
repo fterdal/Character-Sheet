@@ -18,7 +18,7 @@ const HitDice = props => {
     evt.preventDefault()
     editHitDice({
       ...hitDice,
-      [typeDice]: numDice
+      [typeDice]: numDice,
     })
   }
   const handleChange = ({ target: { name, value } }) => {

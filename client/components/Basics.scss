@@ -1,14 +1,16 @@
 .basics-name {
   display: flex;
-  width: 100vw;
+  width: 100%;
   justify-content: center;
+  margin-bottom: 10px;
   input {
     font-size: 16px;
   }
 }
 
 .basics {
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: space-around;
+  margin-bottom: 10px;
 }

@@ -1,7 +1,6 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import { createLogger } from 'redux-logger'
 import { composeWithDevTools } from 'redux-devtools-extension'
-// import { Base64 } from 'js-base64'
 import { createBrowserHistory } from 'history'
 const history = createBrowserHistory()
 
@@ -11,12 +10,6 @@ import { combatBasicsReducer } from './combat-basics'
 import { skillsReducer } from './skills'
 
 const saveToAddressBar = store => next => action => {
-  // NOTE: Consider setting up a throttle here, wherein every few seconds
-  // it uses push instead of replace. In this way, the user will have a record
-  // of changes in their browser history (press 'back' to undo changes)
-
-  // ALSO: Consider using something like MessagePack to compress to address bar
-  // https://msgpack.org/index.html
   const result = next(action)
   const storeJSON = JSON.stringify(store.getState())
   console.log('storeJSON length', storeJSON.length)
@@ -43,11 +36,6 @@ const containerReducer = (state, action) => {
   }
   return statsReducer(state, action)
 }
-
-/*
-  This error popped up when adding a double slash in one of the fields:
-  http://localhost:8080/%7B%22name%22:%22Finn%22,%22race%22:%22Elf%22,%22characterClass%22:%22Wizard/%7B%22name%22:%22Finn%22,%22race%22:%22Elf%22,%22characterClass%22:%22Wizard////(Necromancer)%22%7D
-*/
 
 export * from './basics'
 export * from './abilities'

@@ -4,30 +4,6 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
-  // margin: 50px 50px 0px 50px;
-  margin: 0px;
-  padding: 0px 50px 0px 50px;
-  width: 100vw;
-  input {
-    // max-width: 50px;
-    font-size: 16px;
-  }
-
-  .ability-score {
-    // border: 1px solid black;
-    margin: 2px;
-    // width: 250px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 10px 0px 10px 0px;
-    background-color: $color4;
-    .ability-score-name {
-      color: $color5;
-    }
-    .ability-mod {
-      color: $color5;
-    }
-  }
+  margin: 0px 20px 0px 20px;
+  background-color: $color2;
 }

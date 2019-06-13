@@ -1,0 +1,25 @@
+@import '../variables';
+
+.ability-score {
+  border: 1px solid black;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0px;
+  margin: 5px 20px 5px 20px;
+  background-color: $color4;
+  .ability-score-name {
+    color: $color5;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    background-color: $color5;
+    color: $color4;
+  }
+  .ability-mod {
+    color: $color5;
+  }
+}

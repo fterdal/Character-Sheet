@@ -1,0 +1,18 @@
+@import '../variables';
+
+.address-button {
+  background-color: $color3;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.character-sheet-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.character-sheet {
+  max-width: 800px;
+}
