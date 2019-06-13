@@ -21,11 +21,11 @@ const CharacterSheet = props => {
   }, [])
   const copyLink = () => copy(window.location.href)
   return (
-    <div>
+    <div className="character-sheet-container">
       <button className="address-button" onClick={copyLink} type="button">
         COPY LINK
       </button>
-      <div className="character-sheet-container">
+      <div className="character-sheet">
         <Basics />
         <CombatBasics />
         <Abilities />
