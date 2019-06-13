@@ -8,6 +8,7 @@ import { setEntireState } from '../redux'
 import CombatBasics from './CombatBasics'
 import Skills from './Skills'
 
+import './CharacterSheet.scss'
 const CharacterSheet = props => {
   useEffect(() => {
     try {
@@ -24,10 +25,12 @@ const CharacterSheet = props => {
       <button className="address-button" onClick={copyLink} type="button">
         COPY LINK
       </button>
-      <Basics />
-      <CombatBasics />
-      <Abilities />
-      <Skills />
+      <div className="character-sheet-container">
+        <Basics />
+        <CombatBasics />
+        <Abilities />
+        <Skills />
+      </div>
     </div>
   )
 }
