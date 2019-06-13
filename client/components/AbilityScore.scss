@@ -1,6 +1,9 @@
 @import '../variables';
 
 .ability-score {
+  * {
+    color: $color5;
+  }
   border: 1px solid black;
   border-radius: 10px;
   overflow: hidden;
@@ -12,14 +15,10 @@
   margin: 5px 20px 5px 20px;
   background-color: $color4;
   .ability-score-name {
-    color: $color5;
     font-weight: bold;
     text-align: center;
     width: 100%;
     background-color: $color5;
     color: $color4;
-  }
-  .ability-mod {
-    color: $color5;
   }
 }

@@ -33,15 +33,21 @@ export const defaultStateCombatBasics = {
   maxHP: 0,
   currentHP: 0,
   armorClass: 10,
-  hitDice: { },
+  hitDice: {},
 }
 
 const dispatchers = {
-  [SET_PROFICIENCY]: (state, { prof }) => ({ ...state, prof }),
-  [SET_SPEED]: (state, { speed }) => ({ ...state, speed }),
-  [SET_MAX_HP]: (state, { maxHP }) => ({ ...state, maxHP }),
-  [SET_CURRENT_HP]: (state, { currentHP }) => ({ ...state, currentHP }),
-  [SET_ARMOR_CLASS]: (state, { armorClass }) => ({ ...state, armorClass }),
+  [SET_PROFICIENCY]: (state, { prof }) => ({ ...state, prof: Number(prof) }),
+  [SET_SPEED]: (state, { speed }) => ({ ...state, speed: Number(speed) }),
+  [SET_MAX_HP]: (state, { maxHP }) => ({ ...state, maxHP: Number(maxHP) }),
+  [SET_CURRENT_HP]: (state, { currentHP }) => ({
+    ...state,
+    currentHP: Number(currentHP),
+  }),
+  [SET_ARMOR_CLASS]: (state, { armorClass }) => ({
+    ...state,
+    armorClass: Number(armorClass),
+  }),
   [SET_HIT_DICE]: (state, { hitDice }) => {
     const newHitDice = Object.entries(hitDice).reduce((acc, [key, val]) => {
       if (val > 0) return { ...acc, [key]: val }
@@ -51,7 +57,10 @@ const dispatchers = {
   },
 }
 
-export const combatBasicsReducer = (state = defaultStateCombatBasics, action) => {
+export const combatBasicsReducer = (
+  state = defaultStateCombatBasics,
+  action
+) => {
   if (action.type in dispatchers) {
     return dispatchers[action.type](state, action)
   }

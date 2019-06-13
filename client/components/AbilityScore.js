@@ -1,10 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { setStr, setDex, setCon, setInt, setWis, setCha } from '../redux'
-import { abilityModifierString, abilityName } from './utils'
+import {
+  abilityModifier,
+  modifierString,
+  abilityModifierString,
+  abilityName,
+} from './utils'
 
 import './AbilityScore.scss'
-const AbilityScore = ({ abilityScore, ability, editAbilityScore }) => {
+const AbilityScore = ({ abilityScore, ability, editAbilityScore, save }) => {
+  console.log(ability, 'save', save)
   const handleChange = ({ target: { value } }) => {
     editAbilityScore(value)
   }
@@ -20,14 +26,24 @@ const AbilityScore = ({ abilityScore, ability, editAbilityScore }) => {
       <div className="ability-mod">
         Mod: {abilityModifierString(abilityScore)}
       </div>
+      <div className="ability-save">Save: {save}</div>
     </div>
   )
 }
 
-const mapState = ({ abilities }, ownProps) => ({
-  ability: ownProps.ability,
-  abilityScore: abilities[ownProps.ability],
-})
+const mapState = ({ abilities, combatBasics: { prof } }, ownProps) => {
+  const ability = ownProps.ability
+  const abilityScore = abilities[ownProps.ability]
+  const save = modifierString(
+    abilityModifier(abilityScore) +
+      (abilities.saves.includes(ability) ? prof : 0)
+  )
+  return {
+    ability,
+    abilityScore,
+    save,
+  }
+}
 
 const mapDispatch = (dispatch, ownProps) => {
   return {
