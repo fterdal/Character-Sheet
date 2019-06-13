@@ -21,4 +21,16 @@
     background-color: $color5;
     color: $color4;
   }
+  input[type="checkbox"]:checked {
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: red;
+    color: red;
+    // opacity: 0;
+  }
+  // .ability-save input[type="checkbox"] {
+  //   overflow: hidden;
+  //   border-radius: 50%;
+  //   background-color: red;
+  // }
 }
