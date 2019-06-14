@@ -1,4 +1,9 @@
+@import '../variables';
+
 .combat-basics {
+  button {
+    color: $color5;
+  }
   width: 100%;
   display: flex;
   flex-wrap: wrap;

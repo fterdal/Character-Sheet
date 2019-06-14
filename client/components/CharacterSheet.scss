@@ -11,8 +11,11 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 100%;
 }
 
-.character-sheet {
-  max-width: 800px;
-}
+// .character-sheet {
+//   display: flex;
+//   justify-content: center;
+//   flex-direction: column;
+// }

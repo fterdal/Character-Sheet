@@ -1,10 +1,26 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { setStr, setDex, setCon, setInt, setWis, setCha } from '../redux'
-import { abilityModifierString, abilityName } from './utils'
+import { setAbility, addSave, removeSave } from '../redux'
+import {
+  abilityModifier,
+  modifierString,
+  abilityModifierString,
+  abilityName,
+} from './utils'
 
 import './AbilityScore.scss'
-const AbilityScore = ({ abilityScore, ability, editAbilityScore }) => {
+const AbilityScore = ({
+  abilityScore,
+  ability,
+  editAbilityScore,
+  addSaveProf,
+  removeSaveProf,
+  prof,
+  saveProf,
+}) => {
+  const save = modifierString(
+    abilityModifier(abilityScore) + (saveProf ? prof : 0)
+  )
   const handleChange = ({ target: { value } }) => {
     editAbilityScore(value)
   }
@@ -20,27 +36,31 @@ const AbilityScore = ({ abilityScore, ability, editAbilityScore }) => {
       <div className="ability-mod">
         Mod: {abilityModifierString(abilityScore)}
       </div>
+      <div className="ability-save">
+        <input
+          name="saveProf"
+          type="checkbox"
+          onChange={saveProf ? removeSaveProf : addSaveProf}
+          checked={saveProf}
+        />
+        Save: {save}
+      </div>
     </div>
   )
 }
 
-const mapState = ({ abilities }, ownProps) => ({
-  ability: ownProps.ability,
-  abilityScore: abilities[ownProps.ability],
+const mapState = ({ abilities, combatBasics: { prof } }, { ability }) => ({
+  ability,
+  abilityScore: abilities[ability],
+  prof,
+  saveProf: abilities.saves.includes(ability),
 })
 
-const mapDispatch = (dispatch, ownProps) => {
-  return {
-    editAbilityScore: {
-      str: str => dispatch(setStr(str)),
-      dex: dex => dispatch(setDex(dex)),
-      con: con => dispatch(setCon(con)),
-      int: int => dispatch(setInt(int)),
-      wis: wis => dispatch(setWis(wis)),
-      cha: cha => dispatch(setCha(cha)),
-    }[ownProps.ability],
-  }
-}
+const mapDispatch = (dispatch, { ability }) => ({
+  editAbilityScore: score => dispatch(setAbility(ability, score)),
+  addSaveProf: () => dispatch(addSave(ability)),
+  removeSaveProf: () => dispatch(removeSave(ability)),
+})
 
 export default connect(
   mapState,
