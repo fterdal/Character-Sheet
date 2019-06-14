@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { setName, setRace, setCharClass } from '../redux'
@@ -13,6 +13,13 @@ const Basics = props => {
     editRace,
     editCharacterClass,
   } = props
+  useEffect(() => {
+    if (name && charClass) {
+      document.title = `${name} - ${charClass}`
+    } else {
+      document.title = 'Character Sheet'
+    }
+  }, [name, charClass])
   return (
     <Fragment>
       <div className="basics-name">
