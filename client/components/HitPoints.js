@@ -11,7 +11,7 @@ const HitPoints = props => {
   return (
     <div className="hit-points" style={{ borderColor: hpMode }}>
       <div className="current-hit-points">
-        <label className="tiny-label" htmlFor="currentHP">
+        <label htmlFor="currentHP">
           Current
         </label>
         <input
@@ -28,7 +28,7 @@ const HitPoints = props => {
           value={maxHP}
           onChange={({ target: { value } }) => editMaxHP(value)}
         />
-        <label className="tiny-label" htmlFor="maxHP">
+        <label htmlFor="maxHP">
           Hit Points
         </label>
       </div>

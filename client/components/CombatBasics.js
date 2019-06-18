@@ -29,9 +29,10 @@ const CombatBasics = props => {
   const initiative = abilityModifier(dex)
   return (
     <div className="combat-basics">
-      <HitPoints />
-      <br />
-      <HitDice />
+      <div className="first-row">
+        <HitDice />
+        <HitPoints />
+      </div>
       <br />
       <div>
         <label>Initiative: </label>
