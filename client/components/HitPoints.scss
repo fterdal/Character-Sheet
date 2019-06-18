@@ -1,0 +1,35 @@
+@import '../variables';
+
+.hit-points {
+  background-color: $color4;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid green; /* may be overriden by HitPoints component */
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  input {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+  }
+  label {
+    display: block;
+    color: $color5;
+    font-size: 8px;
+  }
+
+  .max-hit-points,
+  .current-hit-points {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .max-hit-points {
+    border-top: 2px solid black;
+  }
+}
