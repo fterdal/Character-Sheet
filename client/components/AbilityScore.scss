@@ -21,8 +21,11 @@
     background-color: $color5;
     color: $color4;
   }
-
+  .ability-score-input {
+    width: 35px;
+  }
   table {
+    width: 100%;
     th {
       font-size: 8px;
     }

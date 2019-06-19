@@ -40,6 +40,7 @@ const AbilityScore = ({
           <tr>
             <td>
               <input
+                className="ability-score-input"
                 name={ability}
                 value={abilityScore}
                 type="number"
