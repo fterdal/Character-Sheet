@@ -24,8 +24,22 @@
   .ability-score-input {
     width: 35px;
   }
+
+  // iPhone 5/SE is real small
+  @media (max-width: 360px) {
+    margin: 5px;
+    input {
+      width: 15px;
+    }
+    td,
+    input {
+      font-size: 12px;
+    }
+  }
+
   table {
     width: 100%;
+
     th {
       font-size: 8px;
     }
