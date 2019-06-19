@@ -28,11 +28,16 @@ const AbilityScore = ({
     <div className="ability-score">
       <div className="ability-score-name">{abilityName(ability)}</div>
       <table>
+        <thead>
+          <tr>
+            <th>Score</th>
+            <th>Mod</th>
+            <th>Save</th>
+            <th />
+          </tr>
+        </thead>
         <tbody>
           <tr>
-            <th>
-              <label htmlFor={ability}>Score</label>
-            </th>
             <td>
               <input
                 name={ability}
@@ -41,24 +46,16 @@ const AbilityScore = ({
                 onChange={handleChange}
               />
             </td>
-          </tr>
-          <tr>
-            <th>
-              <div className="ability-mod">Mod</div>
-            </th>
             <td>{abilityModifierString(abilityScore)}</td>
-          </tr>
-          <tr>
-            <th>
-              Save
+            <td>{save}</td>
+            <td>
               <input
                 name="saveProf"
                 type="checkbox"
                 onChange={saveProf ? removeSaveProf : addSaveProf}
                 checked={saveProf}
               />
-            </th>
-            <td>{save}</td>
+            </td>
           </tr>
         </tbody>
       </table>
