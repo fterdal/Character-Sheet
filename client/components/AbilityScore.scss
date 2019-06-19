@@ -21,4 +21,16 @@
     background-color: $color5;
     color: $color4;
   }
+
+  table {
+    tr {
+      display: flex;
+      justify-content: space-between;
+      // align-content: center;
+      align-items: center;
+    }
+    th {
+      font-size: 9px;
+    }
+  }
 }
