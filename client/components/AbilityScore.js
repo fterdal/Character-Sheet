@@ -27,24 +27,39 @@ const AbilityScore = ({
   return (
     <div className="ability-score">
       <div className="ability-score-name">{abilityName(ability)}</div>
-      <input
-        name={ability}
-        value={abilityScore}
-        type="number"
-        onChange={handleChange}
-      />
-      <div className="ability-mod">
-        Mod: {abilityModifierString(abilityScore)}
-      </div>
-      <div className="ability-save">
-        <input
-          name="saveProf"
-          type="checkbox"
-          onChange={saveProf ? removeSaveProf : addSaveProf}
-          checked={saveProf}
-        />
-        Save: {save}
-      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Score</th>
+            <th>Mod</th>
+            <th>Save</th>
+            <th />
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <input
+                className="ability-score-input"
+                name={ability}
+                value={abilityScore}
+                type="number"
+                onChange={handleChange}
+              />
+            </td>
+            <td>{abilityModifierString(abilityScore)}</td>
+            <td>{save}</td>
+            <td>
+              <input
+                name="saveProf"
+                type="checkbox"
+                onChange={saveProf ? removeSaveProf : addSaveProf}
+                checked={saveProf}
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   )
 }
