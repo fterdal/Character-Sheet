@@ -9,6 +9,7 @@ import {
 } from '../redux'
 import { abilityModifier } from './utils'
 import HitDice from './HitDice'
+import HitPoints from './HitPoints'
 
 import './CombatBasics.scss'
 const CombatBasics = props => {
@@ -28,28 +29,14 @@ const CombatBasics = props => {
   const initiative = abilityModifier(dex)
   return (
     <div className="combat-basics">
-      <HitDice />
+      <div className="first-row">
+        <HitDice />
+        <HitPoints />
+      </div>
+      <br />
       <div>
-        <label htmlFor="currentHP">Initiative: </label>
+        <label>Initiative: </label>
         <span>{initiative}</span>
-      </div>
-      <div>
-        <label htmlFor="currentHP">Current HP: </label>
-        <input
-          type="number"
-          name="currentHP"
-          value={currentHP}
-          onChange={({ target: { value } }) => editCurrentHP(value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="maxHP">Max HP: </label>
-        <input
-          type="number"
-          name="maxHP"
-          value={maxHP}
-          onChange={({ target: { value } }) => editMaxHP(value)}
-        />
       </div>
       <div>
         <label htmlFor="prof">Proficiency: </label>

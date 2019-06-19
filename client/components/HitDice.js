@@ -5,7 +5,7 @@ import { setHitDice } from '../redux'
 const hitDiceToString = hitDice =>
   Object.entries(hitDice)
     .map(([key, val]) => val + key)
-    .join('+')
+    .join(' ')
 
 import './HitDice.scss'
 const HitDice = props => {
@@ -20,6 +20,7 @@ const HitDice = props => {
       ...hitDice,
       [typeDice]: numDice,
     })
+    setShow(false)
   }
   const handleChange = ({ target: { name, value } }) => {
     if (name === 'typeDice') return setTypeDice(value)
@@ -29,12 +30,10 @@ const HitDice = props => {
   }
   return (
     <div className="hit-dice">
-      <span>Hit Dice: {hitDiceStr}</span>
-      <button type="button" onClick={() => setShow(!show)}>
-        Edit
-      </button>
+      <div className="hit-dice-title">Hit Dice</div>
+      <div className="hit-dice-total">{hitDiceStr || 'None'}</div>
       {show ? (
-        <form onSubmit={handleSubmit}>
+        <form className="hit-dice-form" onSubmit={handleSubmit}>
           <input
             name="numDice"
             required
@@ -51,9 +50,14 @@ const HitDice = props => {
             <option value="d12">d12</option>
             <option value="d20">d20</option>
           </select>
-          <button type="submit">Submit</button>
+          <button type="submit">✔️</button>
         </form>
-      ) : null}
+      ) : (
+        <div />
+      )}
+      <div className="edit-button" onClick={() => setShow(!show)}>
+        Edit
+      </div>
     </div>
   )
 }

@@ -1,12 +1,18 @@
 @import '../variables';
 
 .combat-basics {
-  button {
-    color: $color5;
-  }
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
   flex-direction: column;
+  button {
+    color: $color5;
+  }
+
+  .first-row {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
 }
