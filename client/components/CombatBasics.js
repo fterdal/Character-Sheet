@@ -5,25 +5,19 @@ import {
   setSpeed,
   setMaxHP,
   setCurrentHP,
-  setArmorClass,
 } from '../redux'
 import { abilityModifier } from './utils'
 import HitDice from './HitDice'
 import HitPoints from './HitPoints'
 
 import './CombatBasics.scss'
+import ArmorClass from './ArmorClass';
 const CombatBasics = props => {
   const {
     prof,
     speed,
-    maxHP,
-    currentHP,
-    armorClass,
     editProf,
     editSpeed,
-    editMaxHP,
-    editCurrentHP,
-    editArmorClass,
     dex,
   } = props
   const initiative = abilityModifier(dex)
@@ -32,6 +26,7 @@ const CombatBasics = props => {
       <div className="first-row">
         <HitDice />
         <HitPoints />
+        <ArmorClass />
       </div>
       <br />
       <div>
@@ -56,28 +51,18 @@ const CombatBasics = props => {
           onChange={({ target: { value } }) => editSpeed(value)}
         />
       </div>
-      <div>
-        <label htmlFor="armorClass">AC: </label>
-        <input
-          type="number"
-          name="armorClass"
-          value={armorClass}
-          onChange={({ target: { value } }) => editArmorClass(value)}
-        />
-      </div>
     </div>
   )
 }
 
 const mapState = ({
-  combatBasics: { prof, speed, maxHP, currentHP, armorClass },
+  combatBasics: { prof, speed, maxHP, currentHP },
   abilities: { dex },
 }) => ({
   prof,
   speed,
   maxHP,
   currentHP,
-  armorClass,
   dex,
 })
 
@@ -86,7 +71,6 @@ const mapDispatch = dispatch => ({
   editSpeed: speed => dispatch(setSpeed(speed)),
   editMaxHP: maxHP => dispatch(setMaxHP(maxHP)),
   editCurrentHP: currentHP => dispatch(setCurrentHP(currentHP)),
-  editArmorClass: armorClass => dispatch(setArmorClass(armorClass)),
 })
 
 export default connect(
