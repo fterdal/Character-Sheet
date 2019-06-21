@@ -5,7 +5,6 @@ import { abilityModifier, abilityModifierString } from './utils'
 
 import './ArmorClass.scss'
 const ArmorClass = props => {
-  console.log(props)
   const {
     armor,
     shield,
