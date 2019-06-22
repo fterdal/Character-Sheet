@@ -25,7 +25,8 @@ input {
 }
 
 input,
-select {
+select,
+option {
   text-align: center;
   background-color: #fff;
   color: $color5;
