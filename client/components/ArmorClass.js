@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { setArmor, setShield, setACMisc } from '../redux'
-import { abilityModifier, abilityModifierString } from './utils'
+import { abilityModifier } from './utils'
 
 import './ArmorClass.scss'
 const ArmorClass = props => {

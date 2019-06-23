@@ -1,34 +1,26 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {
-  setProf,
-  setSpeed,
-  setMaxHP,
-  setCurrentHP,
-} from '../redux'
+import { setProf } from '../redux'
 import { abilityModifier } from './utils'
 import HitDice from './HitDice'
 import HitPoints from './HitPoints'
-
+import Speed from './Speed'
 import './CombatBasics.scss'
-import ArmorClass from './ArmorClass';
+import ArmorClass from './ArmorClass'
+
 const CombatBasics = props => {
-  const {
-    prof,
-    speed,
-    editProf,
-    editSpeed,
-    dex,
-  } = props
+  const { prof, editProf, dex } = props
   const initiative = abilityModifier(dex)
   return (
     <div className="combat-basics">
-      <div className="first-row">
+      <div className="row">
         <HitDice />
         <HitPoints />
         <ArmorClass />
       </div>
-      <br />
+      <div className="row">
+        <Speed />
+      </div>
       <div>
         <label>Initiative: </label>
         <span>{initiative}</span>
@@ -42,35 +34,17 @@ const CombatBasics = props => {
           onChange={({ target: { value } }) => editProf(value)}
         />
       </div>
-      <div>
-        <label htmlFor="prof">Speed: </label>
-        <input
-          type="number"
-          name="speed"
-          value={speed}
-          onChange={({ target: { value } }) => editSpeed(value)}
-        />
-      </div>
     </div>
   )
 }
 
-const mapState = ({
-  combatBasics: { prof, speed, maxHP, currentHP },
-  abilities: { dex },
-}) => ({
+const mapState = ({ combatBasics: { prof }, abilities: { dex } }) => ({
   prof,
-  speed,
-  maxHP,
-  currentHP,
   dex,
 })
 
 const mapDispatch = dispatch => ({
   editProf: prof => dispatch(setProf(prof)),
-  editSpeed: speed => dispatch(setSpeed(speed)),
-  editMaxHP: maxHP => dispatch(setMaxHP(maxHP)),
-  editCurrentHP: currentHP => dispatch(setCurrentHP(currentHP)),
 })
 
 export default connect(

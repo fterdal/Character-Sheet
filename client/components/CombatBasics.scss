@@ -10,9 +10,10 @@
     color: $color5;
   }
 
-  .first-row {
+  .row {
     display: flex;
     justify-content: space-around;
     width: 100%;
+    margin-bottom: 10px;
   }
 }

@@ -1,6 +1,6 @@
 @import '../variables';
 
-.armor-class {
+.speed {
   * {
     color: $color5;
   }
@@ -15,34 +15,18 @@
   flex-direction: column;
   justify-content: space-between;
 
-  .armor-class-editor {
-    padding: 2px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    input,
-    .armor-dex {
-      width: 25px;
-      font-size: 12px;
-    }
-    div {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 2px;
-    }
-    label {
-      font-size: 8px;
-    }
-  }
-  .armor-class-title {
+  .speed-title {
     padding: 2px;
     width: 100%;
     text-align: center;
     color: $color4;
     background-color: $color5;
   }
-  .armor-class-total {
+  .speed-total {
+    height: 100%;
     text-align: center;
+    input {
+      margin: 33% 0 33% 0;
+    }
   }
 }
