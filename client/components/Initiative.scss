@@ -50,28 +50,18 @@
     font-size: 10px;
     -webkit-appearance: none; // Hide the dropdown arrow
   }
-  .initiative-abilities {
-    // display: none;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    grid-column-gap: 2px;
-    grid-row-gap: 2px;
-    // grid-auto-rows: minmax(100px, auto);
-
-    // display: flex;
-    // flex-direction: column;
-    // padding: 4px;
-    background-color: $color4;
+  #initiative-abilities {
     position: absolute;
-    li {
-      width: 100%;
-      // display: flex;
-      // align-content: space-between;
-      // justify-content: center;
-      // align-content: center;
-      color: $color5;
-      list-style: none;
+    display: grid;
+    width: 90px;
+    padding: 4px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    background-color: $color4;
+    box-shadow: -2px -2px 2px rgba(0, 0, 255, .2);
+    .initiative-abilities-confirm {
+      grid-column: 2;
+      cursor: pointer;
     }
   }
 }

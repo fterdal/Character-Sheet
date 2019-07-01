@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { setInitMisc, setInitProf } from '../redux'
-import { abilityModifier } from './utils'
+import { abilityModifier, abilityModifierString } from './utils'
 
 import './Initiative.scss'
 const Initiative = props => {
@@ -18,6 +18,12 @@ const Initiative = props => {
     wis,
     cha,
   } = props
+
+  const [displayInitAbilities, setDisplayInitAbilities] = useState(false)
+
+  const toggleInitAbilities = () => {
+    setDisplayInitAbilities(!displayInitAbilities)
+  }
 
   const handleProfBonusChange = evt => {
     const newInitProf = Number(evt.target.value)
@@ -65,19 +71,35 @@ const Initiative = props => {
           </select>
         </div>
         <div>
-          <label htmlFor="initAbilities">Abilities</label>
-          <span> {abilityModifier(str)} </span>
-          <div name="initAbilities" className="initiative-abilities">
+          <label htmlFor="initAbilities">Additional Abilities</label>
+          <span onClick={toggleInitAbilities}>{abilityModifier(str)}</span>
+          <div
+            name="initAbilities"
+            id="initiative-abilities"
+            style={{ display: displayInitAbilities ? 'grid' : 'none' }}
+          >
             <label>Str</label>
             <input type="checkbox" value="str" />
+            <div>{abilityModifierString(str)}</div>
             <label>Con</label>
             <input type="checkbox" value="con" />
+            <div>{abilityModifierString(con)}</div>
             <label>Int</label>
             <input type="checkbox" value="int" />
+            <div>{abilityModifierString(int)}</div>
             <label>Wis</label>
             <input type="checkbox" value="wis" />
+            <div>{abilityModifierString(wis)}</div>
             <label>Cha</label>
             <input type="checkbox" value="cha" />
+            <div>{abilityModifierString(cha)}</div>
+            <button
+              className="initiative-abilities-confirm"
+              type="button"
+              onClick={toggleInitAbilities}
+            >
+              ✔️
+            </button>
           </div>
         </div>
       </div>
