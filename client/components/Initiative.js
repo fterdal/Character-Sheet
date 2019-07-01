@@ -1,12 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {
-  setArmor,
-  setShield,
-  setACMisc,
-  setInitMisc,
-  setInitProf,
-} from '../redux'
+import { setInitMisc, setInitProf } from '../redux'
 import { abilityModifier } from './utils'
 
 import './Initiative.scss'
@@ -70,18 +64,31 @@ const Initiative = props => {
             <option value={2}>2.0</option>
           </select>
         </div>
+        <div>
+          <label htmlFor="initAbilities">Abilities</label>
+          <span> {abilityModifier(str)} </span>
+          <div name="initAbilities" className="initiative-abilities">
+            <label>Str</label>
+            <input type="checkbox" value="str" />
+            <label>Con</label>
+            <input type="checkbox" value="con" />
+            <label>Int</label>
+            <input type="checkbox" value="int" />
+            <label>Wis</label>
+            <input type="checkbox" value="wis" />
+            <label>Cha</label>
+            <input type="checkbox" value="cha" />
+          </div>
+        </div>
       </div>
     </div>
   )
 }
 
 const mapState = ({
-  combatBasics: { armor, shield, acMisc, prof, initMisc, initProf },
+  combatBasics: { prof, initMisc, initProf },
   abilities: { str, dex, con, int, wis, cha },
 }) => ({
-  armor,
-  shield,
-  acMisc,
   prof,
   initMisc,
   initProf,
@@ -94,9 +101,6 @@ const mapState = ({
 })
 
 const mapDispatch = dispatch => ({
-  editArmor: armor => dispatch(setArmor(armor)),
-  editShield: shield => dispatch(setShield(shield)),
-  editACMisc: acMisc => dispatch(setACMisc(acMisc)),
   editInitMisc: initMisc => dispatch(setInitMisc(initMisc)),
   editInitProf: initProf => dispatch(setInitProf(initProf)),
 })

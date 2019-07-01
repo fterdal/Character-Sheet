@@ -48,5 +48,30 @@
   }
   .initiative-proficiency {
     font-size: 10px;
+    -webkit-appearance: none; // Hide the dropdown arrow
+  }
+  .initiative-abilities {
+    // display: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-column-gap: 2px;
+    grid-row-gap: 2px;
+    // grid-auto-rows: minmax(100px, auto);
+
+    // display: flex;
+    // flex-direction: column;
+    // padding: 4px;
+    background-color: $color4;
+    position: absolute;
+    li {
+      width: 100%;
+      // display: flex;
+      // align-content: space-between;
+      // justify-content: center;
+      // align-content: center;
+      color: $color5;
+      list-style: none;
+    }
   }
 }
