@@ -6,6 +6,7 @@ import HitPoints from './HitPoints'
 import ArmorClass from './ArmorClass'
 import Speed from './Speed'
 import Proficiency from './Proficiency'
+import Initiative from './Initiative'
 
 import './CombatBasics.scss'
 const CombatBasics = props => {
@@ -20,6 +21,7 @@ const CombatBasics = props => {
       </div>
       <div className="row">
         <Speed />
+        <Initiative />
         <Proficiency />
       </div>
       <div>
