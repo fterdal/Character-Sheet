@@ -26,9 +26,19 @@ const Initiative = props => {
     editInitProf(newInitProf)
   }
 
+  const initAbilityBonus = {
+    str: abilityModifier(str),
+    con: abilityModifier(con),
+    int: abilityModifier(int),
+    wis: abilityModifier(wis),
+    cha: abilityModifier(cha),
+    '': 0,
+  }[initAbility]
+
   const initProfBonus = Math.floor(Number(initProf) * prof)
 
-  const totalInit = abilityModifier(dex) + initMisc + initProfBonus
+  const totalInit =
+    abilityModifier(dex) + initMisc + initProfBonus + initAbilityBonus
 
   return (
     <div className="initiative">
