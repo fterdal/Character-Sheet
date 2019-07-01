@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
-import { setInitMisc, setInitProf } from '../redux'
-import { abilityModifier, abilityModifierString } from './utils'
+import { setInitMisc, setInitProf, setInitAbility } from '../redux'
+import { abilityModifier } from './utils'
 
 import './Initiative.scss'
 const Initiative = props => {
@@ -11,6 +11,8 @@ const Initiative = props => {
     editInitMisc,
     initProf,
     editInitProf,
+    initAbility,
+    editInitAbility,
     str,
     dex,
     con,
@@ -18,12 +20,6 @@ const Initiative = props => {
     wis,
     cha,
   } = props
-
-  const [displayInitAbilities, setDisplayInitAbilities] = useState(false)
-
-  const toggleInitAbilities = () => {
-    setDisplayInitAbilities(!displayInitAbilities)
-  }
 
   const handleProfBonusChange = evt => {
     const newInitProf = Number(evt.target.value)
@@ -71,35 +67,21 @@ const Initiative = props => {
           </select>
         </div>
         <div>
-          <label htmlFor="initAbilities">Additional Abilities</label>
-          <span onClick={toggleInitAbilities}>{abilityModifier(str)}</span>
-          <div
-            name="initAbilities"
-            id="initiative-abilities"
-            style={{ display: displayInitAbilities ? 'grid' : 'none' }}
-          >
-            <label>Str</label>
-            <input type="checkbox" value="str" />
-            <div>{abilityModifierString(str)}</div>
-            <label>Con</label>
-            <input type="checkbox" value="con" />
-            <div>{abilityModifierString(con)}</div>
-            <label>Int</label>
-            <input type="checkbox" value="int" />
-            <div>{abilityModifierString(int)}</div>
-            <label>Wis</label>
-            <input type="checkbox" value="wis" />
-            <div>{abilityModifierString(wis)}</div>
-            <label>Cha</label>
-            <input type="checkbox" value="cha" />
-            <div>{abilityModifierString(cha)}</div>
-            <button
-              className="initiative-abilities-confirm"
-              type="button"
-              onClick={toggleInitAbilities}
+          <label>Second Ability</label>
+          <div>
+            <select
+              name="initAbility"
+              className="initiative-second-ability"
+              onChange={({ target: { value } }) => editInitAbility(value)}
+              value={initAbility}
             >
-              ✔️
-            </button>
+              <option value="">-</option>
+              <option value="str">Str: {abilityModifier(str)}</option>
+              <option value="con">Con: {abilityModifier(con)}</option>
+              <option value="int">Int: {abilityModifier(int)}</option>
+              <option value="wis">Wis: {abilityModifier(wis)}</option>
+              <option value="cha">Cha: {abilityModifier(cha)}</option>
+            </select>
           </div>
         </div>
       </div>
@@ -108,12 +90,13 @@ const Initiative = props => {
 }
 
 const mapState = ({
-  combatBasics: { prof, initMisc, initProf },
+  combatBasics: { prof, initMisc, initProf, initAbility },
   abilities: { str, dex, con, int, wis, cha },
 }) => ({
   prof,
   initMisc,
   initProf,
+  initAbility,
   str,
   dex,
   con,
@@ -125,6 +108,7 @@ const mapState = ({
 const mapDispatch = dispatch => ({
   editInitMisc: initMisc => dispatch(setInitMisc(initMisc)),
   editInitProf: initProf => dispatch(setInitProf(initProf)),
+  editInitAbility: initAbility => dispatch(setInitAbility(initAbility)),
 })
 
 export default connect(

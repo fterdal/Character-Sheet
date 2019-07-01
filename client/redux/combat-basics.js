@@ -11,7 +11,7 @@ const SET_SHIELD = 'SET_SHIELD'
 const SET_AC_MISC = 'SET_AC_MISC'
 const SET_INIT_MISC = 'SET_INIT_MISC'
 const SET_INIT_PROF = 'SET_INIT_PROF'
-const SET_INIT_ABILITIES = 'SET_INIT_ABILITIES'
+const SET_INIT_ABILITY = 'SET_INIT_ABILITY'
 const SET_HIT_DICE = 'SET_HIT_DICE'
 
 // ACTION CREATORS
@@ -25,9 +25,9 @@ export const setACMisc = acMisc => ({ type: SET_AC_MISC, acMisc })
 export const setInitMisc = initMisc => ({ type: SET_INIT_MISC, initMisc })
 export const setInitProf = initProf => ({ type: SET_INIT_PROF, initProf })
 /* By default, we only add dex to initiative. But sometimes, we add additional ability mods */
-export const setInitAbilities = initAbilities => ({
-  type: SET_INIT_ABILITIES,
-  initAbilities,
+export const setInitAbility = initAbility => ({
+  type: SET_INIT_ABILITY,
+  initAbility,
 })
 /**
  * hit dice is an object like this:
@@ -48,7 +48,7 @@ export const defaultStateCombatBasics = {
   acMisc: 0,
   initMisc: 0,
   initProf: 0,
-  initAbilities: [],
+  initAbility: '',
   hitDice: {},
 }
 
@@ -74,9 +74,9 @@ const dispatchers = {
       initProf: Number(initProf),
     }
   },
-  [SET_INIT_ABILITIES]: (state, { initAbilities }) => ({
+  [SET_INIT_ABILITY]: (state, { initAbility }) => ({
     ...state,
-    initAbilities: Number(initAbilities),
+    initAbility,
   }),
   [SET_HIT_DICE]: (state, { hitDice }) => {
     const newHitDice = Object.entries(hitDice).reduce((acc, [key, val]) => {
