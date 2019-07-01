@@ -48,7 +48,7 @@ const Initiative = props => {
           <div>{initProfBonus}</div>
         </div>
         <div>
-          <label htmlFor="initMisc">Misc </label>
+          <label htmlFor="initMisc">Misc</label>
           <input
             type="number"
             name="initMisc"
