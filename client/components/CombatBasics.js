@@ -24,10 +24,6 @@ const CombatBasics = props => {
         <Initiative />
         <Proficiency />
       </div>
-      <div>
-        <label>Initiative: </label>
-        <span>{initiative}</span>
-      </div>
     </div>
   )
 }
