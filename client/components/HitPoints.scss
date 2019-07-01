@@ -1,43 +1,44 @@
 @import '../variables';
 
 .hit-points {
+  * {
+    color: $color5;
+  }
   background-color: $color4;
-  border-radius: 50%;
-  // overflow: hidden;
-  border: 4px solid green; /* may be overriden by HitPoints component */
-  width: 80px;
-  height: 80px;
+  padding: 0px;
+  width: 115px;
+  height: 115px;
+  border: 2px solid $color6;
+  border-radius: 10%;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  input {
-    background-color: transparent;
-    border: none;
-    font-size: 20px;
+  justify-content: space-between;
+  label {
+    font-size: 8px;
   }
-  // label {
-  //   display: block;
-  //   color: $color5;
-  //   font-size: 14px;
-  //   // z-index: 2;
-  // }
 
-  .max-hit-points,
-  .current-hit-points {
+  .hit-points-title {
+    padding: 2px;
     width: 100%;
+    text-align: center;
+    color: $color4;
+    background-color: $color5;
+  }
+
+  .hit-points-editor,
+  .current-hit-points,
+  .max-hit-points {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
   }
-  .max-hit-points {
-    border-top: 2px solid black;
+  .hit-points-editor {
+    justify-content: space-around;
+    height: 100%;
+    // padding: 5px;
+    input {
+      padding: 0px;
+    }
   }
-}
-.currentHP,
-.maxHP {
-  display: block;
-  color: $color2;
-  font-size: 12px;
-  // z-index: 2;
 }

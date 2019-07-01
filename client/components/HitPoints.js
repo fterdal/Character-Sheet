@@ -9,10 +9,11 @@ const HitPoints = props => {
   if (currentHP / maxHP <= 0.5) hpMode = 'orange'
   if (currentHP / maxHP <= 0.25) hpMode = 'red'
   return (
-    <div>
-      <label htmlFor="currentHP">Current</label>
-      <div className="hit-points" style={{ borderColor: hpMode }}>
+    <div className="hit-points">
+      <div className="hit-points-title">Hit Points</div>
+      <div className="hit-points-editor" style={{ borderColor: hpMode }}>
         <div className="current-hit-points">
+          <label htmlFor="currentHP">Current</label>
           <input
             type="number"
             name="currentHP"
@@ -27,9 +28,9 @@ const HitPoints = props => {
             value={maxHP}
             onChange={({ target: { value } }) => editMaxHP(value)}
           />
+          <label htmlFor="maxHP">Maximum</label>
         </div>
       </div>
-      <label htmlFor="maxHP">Hit Points</label>
     </div>
   )
 }
