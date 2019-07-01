@@ -1,26 +1,43 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { setArmor, setShield, setACMisc, setInitMisc } from '../redux'
+import {
+  setArmor,
+  setShield,
+  setACMisc,
+  setInitMisc,
+  setInitProf,
+} from '../redux'
 import { abilityModifier } from './utils'
 
 import './Initiative.scss'
 const Initiative = props => {
   const {
-    armor,
-    shield,
-    acMisc,
     prof,
     initMisc,
-    dex,
-    editACMisc,
     editInitMisc,
+    initProf,
+    editInitProf,
+    str,
+    dex,
+    con,
+    int,
+    wis,
+    cha,
   } = props
-  const totalAC = armor + shield + acMisc + abilityModifier(dex)
-  const initProfBonus = prof * 2
+
+  const handleProfBonusChange = evt => {
+    const newInitProf = Number(evt.target.value)
+    editInitProf(newInitProf)
+  }
+
+  const initProfBonus = Math.floor(Number(initProf) * prof)
+
+  const totalInit = abilityModifier(dex) + initMisc + initProfBonus
+
   return (
     <div className="initiative">
       <div className="initiative-title">Initiative</div>
-      <div className="initiative-total">{totalAC}</div>
+      <div className="initiative-total">{totalInit}</div>
       <div className="initiative-editor">
         <div>
           <label>Dex</label>
@@ -40,14 +57,17 @@ const Initiative = props => {
           />
         </div>
         <div>
+          <label htmlFor="initProfBonus">Prof</label>
           <select
             name="initProfBonus"
             className="initiative-proficiency"
+            onChange={handleProfBonusChange}
+            value={initProf}
           >
             <option value={0}>-</option>
-            <option value={0.5}>Half proficiency</option>
-            <option value={1}>Proficient</option>
-            <option value={2}>Double proficiency</option>
+            <option value={0.5}>0.5</option>
+            <option value={1}>1.0</option>
+            <option value={2}>2.0</option>
           </select>
         </div>
       </div>
@@ -56,15 +76,21 @@ const Initiative = props => {
 }
 
 const mapState = ({
-  combatBasics: { armor, shield, acMisc, prof, initMisc },
-  abilities: { dex },
+  combatBasics: { armor, shield, acMisc, prof, initMisc, initProf },
+  abilities: { str, dex, con, int, wis, cha },
 }) => ({
   armor,
   shield,
   acMisc,
   prof,
   initMisc,
+  initProf,
+  str,
   dex,
+  con,
+  int,
+  wis,
+  cha,
 })
 
 const mapDispatch = dispatch => ({
@@ -72,6 +98,7 @@ const mapDispatch = dispatch => ({
   editShield: shield => dispatch(setShield(shield)),
   editACMisc: acMisc => dispatch(setACMisc(acMisc)),
   editInitMisc: initMisc => dispatch(setInitMisc(initMisc)),
+  editInitProf: initProf => dispatch(setInitProf(initProf)),
 })
 
 export default connect(

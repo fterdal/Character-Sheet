@@ -10,6 +10,8 @@ const SET_ARMOR = 'SET_ARMOR'
 const SET_SHIELD = 'SET_SHIELD'
 const SET_AC_MISC = 'SET_AC_MISC'
 const SET_INIT_MISC = 'SET_INIT_MISC'
+const SET_INIT_PROF = 'SET_INIT_PROF'
+const SET_INIT_ABILITY = 'SET_INIT_ABILITY'
 const SET_HIT_DICE = 'SET_HIT_DICE'
 
 // ACTION CREATORS
@@ -21,6 +23,7 @@ export const setArmor = armor => ({ type: SET_ARMOR, armor })
 export const setShield = shield => ({ type: SET_SHIELD, shield })
 export const setACMisc = acMisc => ({ type: SET_AC_MISC, acMisc })
 export const setInitMisc = initMisc => ({ type: SET_INIT_MISC, initMisc })
+export const setInitProf = initProf => ({ type: SET_INIT_PROF, initProf })
 /**
  * hit dice is an object like this:
  * { d6: 3, d10: 1 } for a character with 3d6+1d10 hit dice
@@ -39,6 +42,7 @@ export const defaultStateCombatBasics = {
   shield: 0,
   acMisc: 0,
   initMisc: 0,
+  initProf: 0,
   hitDice: {},
 }
 
@@ -53,7 +57,17 @@ const dispatchers = {
   [SET_ARMOR]: (state, { armor }) => ({ ...state, armor: Number(armor) }),
   [SET_SHIELD]: (state, { shield }) => ({ ...state, shield: Number(shield) }),
   [SET_AC_MISC]: (state, { acMisc }) => ({ ...state, acMisc: Number(acMisc) }),
-  [SET_INIT_MISC]: (state, { initMisc }) => ({ ...state, acMisc: Number(initMisc) }),
+  [SET_INIT_MISC]: (state, { initMisc }) => ({
+    ...state,
+    initMisc: Number(initMisc),
+  }),
+  [SET_INIT_PROF]: (state, { initProf }) => {
+    if (![0, 0.5, 1, 2].includes(initProf)) return state;
+    return {
+      ...state,
+      initProf: Number(initProf),
+    }
+  },
   [SET_HIT_DICE]: (state, { hitDice }) => {
     const newHitDice = Object.entries(hitDice).reduce((acc, [key, val]) => {
       if (val > 0) return { ...acc, [key]: val }
