@@ -16,9 +16,9 @@ module.exports = {
     contentBase: './public',
     historyApiFallback: true,
     // 👇 Do this if you wanna serve openly on the local network:
-    // host: '0.0.0.0',
+    host: '0.0.0.0',
     // allowedHosts: ['finns-macbook-pro.local:8080'],
-    // disableHostCheck: true,
+    disableHostCheck: true,
   },
   devtool: isDev ? 'source-map' : false,
   module: {

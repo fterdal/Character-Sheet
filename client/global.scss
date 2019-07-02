@@ -22,10 +22,12 @@ body {
 
 input {
   font-size: 16px;
+  padding: 0px;
 }
 
 input,
-select {
+select,
+option {
   text-align: center;
   background-color: #fff;
   color: $color5;
@@ -43,4 +45,7 @@ button {
 input::-webkit-outer-spin-button,
 input[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
 }

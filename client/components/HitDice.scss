@@ -2,7 +2,6 @@
 
 .hit-dice {
   background-color: $color4;
-  cursor: pointer;
   padding: 0px;
   width: 115px;
   height: 115px;
@@ -34,18 +33,16 @@
     select {
       padding: 0px;
     }
+    option {
+      color: $color5
+    }
     button[type="submit"] {
       cursor: pointer;
       background-color: transparent;
+      padding: 0px;
     }
     display: flex;
     justify-content: space-around;
-    margin-bottom: 3px;
-  }
-  .edit-button {
-    color: $color4;
-    background-color: $color2;
-    text-align: center;
-    font-size: 12px;
+    margin-bottom: 5px;
   }
 }

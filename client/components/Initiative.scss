@@ -1,0 +1,53 @@
+@import '../variables';
+
+.initiative {
+  * {
+    color: $color5;
+  }
+  background-color: $color4;
+  padding: 0px;
+  width: 115px;
+  height: 115px;
+  border: 2px solid $color6;
+  border-radius: 10%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .initiative-editor {
+    padding: 2px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    input {
+      width: 25px;
+      font-size: 12px;
+    }
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 2px;
+      font-size: 12px;
+    }
+    label {
+      font-size: 8px;
+    }
+  }
+  .initiative-title {
+    padding: 2px;
+    width: 100%;
+    text-align: center;
+    color: $color4;
+    background-color: $color5;
+  }
+  .initiative-total {
+    text-align: center;
+  }
+  .initiative-second-ability {
+    margin: 0px;
+    padding: 0px;
+    font-size: 10px;
+  }
+}

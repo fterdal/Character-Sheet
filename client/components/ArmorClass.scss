@@ -1,0 +1,48 @@
+@import '../variables';
+
+.armor-class {
+  * {
+    color: $color5;
+  }
+  background-color: $color4;
+  padding: 0px;
+  width: 115px;
+  height: 115px;
+  border: 2px solid $color6;
+  border-radius: 10%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .armor-class-editor {
+    padding: 2px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    input,
+    .armor-dex {
+      width: 25px;
+      font-size: 12px;
+    }
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 2px;
+    }
+    label {
+      font-size: 8px;
+    }
+  }
+  .armor-class-title {
+    padding: 2px;
+    width: 100%;
+    text-align: center;
+    color: $color4;
+    background-color: $color5;
+  }
+  .armor-class-total {
+    text-align: center;
+  }
+}

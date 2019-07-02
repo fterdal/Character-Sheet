@@ -1,6 +1,6 @@
 @import '../variables';
 
-.hit-points {
+.proficiency {
   * {
     color: $color5;
   }
@@ -14,30 +14,19 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  label {
-    font-size: 8px;
-  }
 
-  .hit-points-title {
+  .proficiency-title {
     padding: 2px;
     width: 100%;
     text-align: center;
     color: $color4;
     background-color: $color5;
   }
-
-  .hit-points-editor,
-  .current-hit-points,
-  .max-hit-points {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .hit-points-editor {
-    justify-content: space-around;
+  .proficiency-total {
     height: 100%;
+    text-align: center;
     input {
-      padding: 0px;
+      margin: 33% 0 33% 0;
     }
   }
 }
