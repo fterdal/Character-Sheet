@@ -45,15 +45,15 @@ const Initiative = props => {
       <div className="initiative-title">Initiative</div>
       <div className="initiative-total">{totalInit}</div>
       <div className="initiative-editor">
-        <div>
+        <div className="initiative-editor-row-1">
           <label>Dex</label>
           <div>{abilityModifier(dex)}</div>
         </div>
-        <div>
+        <div className="initiative-editor-row-1">
           <label>Proficiency</label>
           <div>{initProfBonus}</div>
         </div>
-        <div>
+        <div className="initiative-editor-row-1">
           <label htmlFor="initMisc">Misc</label>
           <input
             type="number"
